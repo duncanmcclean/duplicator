@@ -1,7 +1,7 @@
 {
     "name": "doublethreedigital/duplicator",
     "type": "statamic-addon",
-    "description": "Duplicate Statamic entries, assets, etc",
+    "description": "Duplicate Entries in Statamic 3",
     "license": "proprietary",
     "autoload": {
         "psr-4": {
@@ -16,7 +16,7 @@
     "extra": {
         "statamic": {
             "name": "Duplicator",
-            "description": "Duplicate stuff"
+            "description": "Duplicate Entries in Statamic 3"
         },
         "laravel": {
             "providers": [

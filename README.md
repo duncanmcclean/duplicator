@@ -1,7 +1,7 @@
 # Duplicator
-> Duplicate entries, assets, forms, blueprint in Statamic 3.
+> Duplicate Entries in Statamic 3
 
-TODO
+This addon allows your editors to duplicate entries in the Statamic Control Panel.
 
 ## Documentation
 [Read](./DOCUMENTATION.md) this addon's documentation.
