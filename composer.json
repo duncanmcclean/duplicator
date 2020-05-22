@@ -15,8 +15,8 @@
     },
     "extra": {
         "statamic": {
-            "name": "Addon Boilerplate",
-            "description": "A Statamic 3 addon boilerplate, ready for testing."
+            "name": "Duplicator",
+            "description": "Duplicate stuff"
         },
         "laravel": {
             "providers": [
