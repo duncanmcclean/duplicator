@@ -2,7 +2,6 @@
 
 namespace DoubleThreeDigital\Duplicator;
 
-use Illuminate\Support\Str;
 use Statamic\Actions\Action;
 use Statamic\Contracts\Entries\Entry;
 
@@ -34,10 +33,5 @@ class DuplicateAction extends Action
                 ->data($item->data()->merge(['title' => $item->data()->get('title').' (Duplicate)']))
                 ->save();
         }
-    }
-
-    public function redirect($items, $values)
-    {
-        // return back to the entries listing page
     }
 }
