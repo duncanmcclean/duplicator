@@ -3,7 +3,8 @@
 namespace DoubleThreeDigital\Duplicator;
 
 use Statamic\Actions\Action;
-use Statamic\Contracts\Entries\Entry;
+use Statamic\Contracts\Entries\Entry as AnEntry;
+use Statamic\Facades\Entry;
 
 class DuplicateAction extends Action
 {
@@ -11,7 +12,7 @@ class DuplicateAction extends Action
 
     public function visibleTo($item)
     {
-        return $item instanceof Entry;
+        return $item instanceof AnEntry;
     }
 
     public function visibleToBulk($items)
@@ -23,8 +24,8 @@ class DuplicateAction extends Action
     {
         $item = $items->first();
 
-        if ($item instanceof Entry) {
-            $duplicate = \Statamic\Facades\Entry::make()
+        if ($item instanceof AnEntry) {
+            $duplicate = Entry::make()
                 ->collection($item->collection())
                 ->blueprint($item->blueprint())
                 ->locale($item->locale())

@@ -5,6 +5,8 @@
 
 ## Usage
 
+![Demo](./demo.gif)
+
 To duplicate an entry, go to the Collections page where you can view the entries, click on the three dots
 
 1. Go to a Collection, and view the entries listing.
