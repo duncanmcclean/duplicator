@@ -1,7 +1,7 @@
 # Duplicator
 > Duplicate Entries in Statamic 3
 
-This addon makes it easy for content editors to duplicate existing entries from within the Statamic Control Panel.
+This addon makes it easy for content editors to duplicate existing entries from within the Statamic Control Panel. In the future, hopefully this addon will be updated to support duplicating other things like Blueprints and Assets.
 
 ![Addon Demo](./demo.gif)
 
