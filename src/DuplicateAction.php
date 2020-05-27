@@ -22,17 +22,18 @@ class DuplicateAction extends Action
 
     public function run($items, $values)
     {
-        $item = $items->first();
-
-        if ($item instanceof AnEntry) {
-            $duplicate = Entry::make()
-                ->collection($item->collection())
-                ->blueprint($item->blueprint())
-                ->locale($item->locale())
-                ->published($item->published())
-                ->slug($item->slug().'-duplicate')
-                ->data($item->data()->merge(['title' => $item->data()->get('title').' (Duplicate)']))
-                ->save();
-        }
+        collect($items)
+            ->each(function ($item) {
+                if ($item instanceof AnEntry) {
+                    Entry::make()
+                        ->collection($item->collection())
+                        ->blueprint($item->blueprint())
+                        ->locale($item->locale())
+                        ->published($item->published())
+                        ->slug($item->slug().'-duplicate')
+                        ->data($item->data()->merge(['title' => $item->data()->get('title').' (Duplicate)']))
+                        ->save();
+                }
+            });
     }
 }

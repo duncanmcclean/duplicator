@@ -5,3 +5,5 @@ node_modules
 package-lock.json
 .php_cs.cache
 .idea
+tests/__fixtures__/users/*.yaml
+tests/__fixtures__/content/*.yaml

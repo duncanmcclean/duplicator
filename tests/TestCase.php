@@ -5,11 +5,19 @@ namespace DoubleThreeDigital\Duplicator\Tests;
 use Statamic\Extend\Manifest;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use DoubleThreeDigital\Duplicator\ServiceProvider;
+use Illuminate\Foundation\Testing\WithFaker;
+use Statamic\Contracts\Auth\User as AuthUser;
 use Statamic\Providers\StatamicServiceProvider;
 use Statamic\Statamic;
+use Statamic\Facades\Collection;
+use Statamic\Facades\Entry;
+use Statamic\Facades\User;
+use Statamic\Stache\Stache;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    use WithFaker;
+
     protected function getPackageProviders($app)
     {
         return [
@@ -51,5 +59,42 @@ abstract class TestCase extends OrchestraTestCase
         }
 
         $app['config']->set('statamic.users.repository', 'file');
+        $app['config']->set('statamic.stache', require(__DIR__.'/__fixtures__/config/statamic/stache.php'));
+    }
+
+    public function makeStandardUser()
+    {
+        return User::make()
+            ->id((new Stache())->generateId())
+            ->email($this->faker->email);
+    }
+
+    public function makeCollection(string $handle, string $name)
+    {
+        Collection::make($handle)
+            ->title($name)
+            ->pastDateBehavior('public')
+            ->futureDateBehavior('private')
+            ->save();
+
+        return Collection::findByHandle($handle);
+    }
+
+    public function makeEntry(string $collectionHandle, string $slug, AuthUser $user)
+    {
+        Entry::make()
+            ->collection($collectionHandle)
+            ->blueprint('default')
+            ->locale('default')
+            ->published(true)
+            ->slug($slug)
+            ->data([
+                'summary' => $this->faker->text,
+            ])
+            ->set('updated_by', $user->id)
+            ->set('updated_at', now()->timestamp)
+            ->save();
+
+        return Entry::findBySlug($slug, $collectionHandle);
     }
 }
