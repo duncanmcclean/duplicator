@@ -4,7 +4,7 @@ namespace DoubleThreeDigital\Duplicator\Tests;
 
 use Statamic\Extend\Manifest;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use DoubleThreeDigital\AddonBoilerplate\ServiceProvider;
+use DoubleThreeDigital\Duplicator\ServiceProvider;
 use Statamic\Providers\StatamicServiceProvider;
 use Statamic\Statamic;
 
