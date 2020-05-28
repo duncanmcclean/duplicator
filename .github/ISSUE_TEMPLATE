@@ -21,9 +21,6 @@ I expected...
 
 ## Environment information
 
-**Simple Commerce version:** v1.0.0-beta-{replace_this}
-_run `php artisan simple-commerce:version` to find it._
-
 **Statamic version:** 3.0.0.-beta-{replace_me}
 _run `php please -V` to find it._
 
