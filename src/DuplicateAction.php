@@ -27,7 +27,7 @@ class DuplicateAction extends Action
                 if ($item instanceof AnEntry) {
                     Entry::make()
                         ->collection($item->collection())
-                        ->blueprint($item->blueprint())
+                        ->blueprint($item->blueprint()->handle())
                         ->locale($item->locale())
                         ->published($item->published())
                         ->slug($item->slug().'-duplicate')
