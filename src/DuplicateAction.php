@@ -8,7 +8,10 @@ use Statamic\Facades\Entry;
 
 class DuplicateAction extends Action
 {
-    protected static $handle = 'Duplicate';
+    public static function title()
+    {
+        return __('duplicator::messages.duplicate');
+    }
 
     public function visibleTo($item)
     {
@@ -30,8 +33,10 @@ class DuplicateAction extends Action
                         ->blueprint($item->blueprint()->handle())
                         ->locale($item->locale())
                         ->published($item->published())
-                        ->slug($item->slug().'-duplicate')
-                        ->data($item->data()->merge(['title' => $item->data()->get('title').' (Duplicate)']))
+                        ->slug($item->slug().__('duplicator::messages.duplicated_slug'))
+                        ->data($item->data()->merge([
+                            'title' => $item->data()->get('title').__('duplicator::messages.duplicated_title')
+                        ]))
                         ->save();
                 }
             });
