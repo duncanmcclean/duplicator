@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "statamic/cms": "^3.0@beta"
+        "statamic/cms": "3.0.*"
     },
     "require-dev": {
         "nunomaduro/collision": "^4.2",
