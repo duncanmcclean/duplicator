@@ -3,7 +3,10 @@
 namespace DoubleThreeDigital\Duplicator\Tests;
 
 use DoubleThreeDigital\Duplicator\DuplicateAction;
+use Illuminate\Support\Facades\Config;
 use Statamic\Facades\Entry;
+use Statamic\Facades\Site;
+use Statamic\Sites\Sites;
 
 class DuplicateActionTest extends TestCase
 {
@@ -16,6 +19,18 @@ class DuplicateActionTest extends TestCase
 
         $this->user = $this->makeStandardUser();
         $this->action = new DuplicateAction();
+    }
+
+    /** @test */
+    public function cant_get_field_items_for_single_site()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /** @test */
+    public function can_get_field_items_for_multi_site()
+    {
+        $this->markTestIncomplete();
     }
 
     /** @test */
@@ -51,5 +66,11 @@ class DuplicateActionTest extends TestCase
 
         $this->assertIsObject($duplicateEntry);
         $this->assertSame($duplicateEntry->slug(), 'fresh-guide-duplicate');
+    }
+
+    /** @test */
+    public function can_duplicate_entry_for_different_site()
+    {
+        $this->markTestIncomplete();
     }
 }

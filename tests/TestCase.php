@@ -7,6 +7,7 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use DoubleThreeDigital\Duplicator\ServiceProvider;
 use Illuminate\Foundation\Testing\WithFaker;
 use Statamic\Contracts\Auth\User as AuthUser;
+use Statamic\Facades\Blueprint;
 use Statamic\Providers\StatamicServiceProvider;
 use Statamic\Statamic;
 use Statamic\Facades\Collection;
@@ -60,6 +61,8 @@ abstract class TestCase extends OrchestraTestCase
 
         $app['config']->set('statamic.users.repository', 'file');
         $app['config']->set('statamic.stache', require(__DIR__.'/__fixtures__/config/statamic/stache.php'));
+
+        Blueprint::setDirectory(__DIR__.'/__fixtures__/resources/blueprints');
     }
 
     public function makeStandardUser()
@@ -84,7 +87,6 @@ abstract class TestCase extends OrchestraTestCase
     {
         Entry::make()
             ->collection($collectionHandle)
-            ->blueprint('default')
             ->locale('default')
             ->published(true)
             ->slug($slug)
