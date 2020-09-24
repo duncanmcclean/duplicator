@@ -16,6 +16,8 @@ To duplicate an entry, go to the Collections page where you can view the entries
 
 1. Go to a Collection, and view the entries listing.
 2. Decide on the entry you wish to duplicate. Click the three dots to toggle a dropdown and click the `Duplicate` option.
+3. If you've got a multi-site setup, you'll be asked to select the site you wish to duplicate the entry to. Select and option and continue.
+4. The entry will then be duplicated!
 
 ## Resources
 * [Official Support](https://doublethree.digital)
