@@ -12,7 +12,7 @@ This addon makes it easy for content editors to duplicate existing entries from 
 
 ## Usage
 
-To duplicate an entry, go to the Collections page where you can view the entries, click on the three dots
+> **🔥 Hot Tip:** Make sure you're on the `List` entries view, not the `Tree` one or else you won't see the `Duplicate` button.
 
 1. Go to a Collection, and view the entries listing.
 2. Decide on the entry you wish to duplicate. Click the three dots to toggle a dropdown and click the `Duplicate` option.
