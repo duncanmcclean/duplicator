@@ -23,11 +23,11 @@ class DuplicateAction extends Action
                     'type' => 'select',
                     'instructions' => __('duplicator::messages.fields.site.instructions'),
                     'validate' => 'required|in:'.Site::all()->keys()->join(','),
-                    'options' => Site::all()->map(function (SitesSite $site) {
-                        return [
-                            $site->handle() => $site->name(),
-                        ];
-                    })->flatten()->toArray(),
+                    'options' => Site::all()
+                        ->map(function (SitesSite $site) {
+                            return $site->name();
+                        })
+                        ->toArray(),
                 ],
             ];
         }
@@ -48,23 +48,18 @@ class DuplicateAction extends Action
     public function run($items, $values)
     {
         collect($items)
-            ->each(function ($original) use ($values) {
-                if ($original instanceof AnEntry) {
-                    $entry = Entry::make()
-                        ->collection($original->collection())
-                        ->blueprint($original->blueprint()->handle())
-                        ->locale(isset($values['site']) ? $values['site'] : $original->locale())
-                        ->published($original->published())
-                        ->slug($original->slug().__('duplicator::messages.duplicated_slug'))
-                        ->data($original->data()->merge([
-                            'title' => $original->data()->get('title').__('duplicator::messages.duplicated_title')
-                        ]));
-
-                    if ($original->hasDate() && $original->collection()->dated()) {
-                        $entry = $entry->date($original->date());
-                    }
-
-                    return $entry->save();
+            ->each(function ($item) use ($values) {
+                if ($item instanceof AnEntry) {
+                    Entry::make()
+                        ->collection($item->collection())
+                        ->blueprint($item->blueprint()->handle())
+                        ->locale(isset($values['site']) ? $values['site'] : $item->locale())
+                        ->published($item->published())
+                        ->slug($item->slug().__('duplicator::messages.duplicated_slug'))
+                        ->data($item->data()->merge([
+                            'title' => $item->data()->get('title').__('duplicator::messages.duplicated_title')
+                        ]))
+                        ->save();
                 }
             });
     }
