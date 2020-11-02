@@ -50,7 +50,9 @@ class DuplicateAction extends Action
         collect($items)
             ->each(function ($item) use ($values) {
                 if ($item instanceof AnEntry) {
-                    Entry::make()
+                    $itemParent = $this->getEntryInStructureTree($item->structure()->in($item->locale())->tree(), $item->id())[0]['entry'];
+
+                    $entry = Entry::make()
                         ->collection($item->collection())
                         ->blueprint($item->blueprint()->handle())
                         ->locale(isset($values['site']) ? $values['site'] : $item->locale())
@@ -58,9 +60,29 @@ class DuplicateAction extends Action
                         ->slug($item->slug().__('duplicator::messages.duplicated_slug'))
                         ->data($item->data()->merge([
                             'title' => $item->data()->get('title').__('duplicator::messages.duplicated_title')
-                        ]))
-                        ->save();
+                        ]));
+
+                    $entry->save();
+
+                    if ($itemParent && $itemParent !== $item->id()) {
+                        $entry->structure()
+                            ->in(isset($values['site']) ? $values['site'] : $item->locale())
+                            ->appendTo($itemParent, $entry)
+                            ->save();
+                    }
                 }
             });
+    }
+
+    protected function getEntryInStructureTree(array $tree, string $entryId)
+    {
+        return collect($tree)
+            ->filter(function ($parent) use ($entryId) {
+                $entryMatches = $parent['entry'] === $entryId;
+                $childMatches = isset($parent['children']) ? $this->getEntryInStructureTree($parent['children'], $entryId) : false;
+
+                return $childMatches || $entryMatches;
+            })
+            ->toArray();
     }
 }

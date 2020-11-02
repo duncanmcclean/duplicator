@@ -1,117 +1,88 @@
 <?php
 
-namespace DoubleThreeDigital\Duplicator\Tests;
+namespace DoubleThreeDigital\Duplicator;
 
-use DoubleThreeDigital\Duplicator\DuplicateAction;
-use Illuminate\Support\Facades\Config;
+use Statamic\Actions\Action;
+use Statamic\Contracts\Entries\Entry as AnEntry;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
-use Statamic\Sites\Sites;
+use Statamic\Sites\Site as SitesSite;
 
-class DuplicateActionTest extends TestCase
+class DuplicateAction extends Action
 {
-    public $user;
-    public $action;
-
-    public function setUp(): void
+    public static function title()
     {
-        parent::setUp();
-
-        $this->user = $this->makeStandardUser();
-        $this->action = new DuplicateAction();
+        return __('duplicator::messages.duplicate');
     }
 
-    /** @test */
-    public function cant_get_field_items_for_single_site()
+    protected function fieldItems()
     {
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function can_get_field_items_for_multi_site()
-    {
-        $this->markTestIncomplete();
-    }
-
-    /** @test */
-    public function is_visible_for_entries()
-    {
-        $collection = $this->makeCollection('articles', 'Articles');
-        $entry = $this->makeEntry('articles', 'fresh-article', $this->user);
-
-        $visible = $this->action->visibleTo($entry);
-
-        $this->assertTrue($visible);
-    }
-
-    /** @test */
-    public function is_not_visible_for_non_entries()
-    {
-        $collection = $this->makeCollection('gallery', 'Photo Gallery');
-
-        $visible = $this->action->visibleTo($collection);
-
-        $this->assertFalse($visible);
-    }
-
-    /** @test */
-    public function can_duplicate_entry()
-    {
-        $collection = $this->makeCollection('guides', 'Guides');
-        $entry = $this->makeEntry('guides', 'fresh-guide', $this->user);
-
-        $duplicate = $this->action->run(collect([$entry]), []);
-
-        $duplicateEntry = Entry::findBySlug('fresh-guide-duplicate', 'guides');
-
-        $this->assertIsObject($duplicateEntry);
-        $this->assertSame($duplicateEntry->slug(), 'fresh-guide-duplicate');
-    }
-    
-    /** @test */
-    public function can_duplicate_entry_with_original_parent()
-    {
-        $collection = $this->makeCollection('recipies', 'Recipies');
-
-        $entryParent = $this->makeEntry('recipies', 'cheese-toastie', $this->user);
-        $entry = $this->makeEntry('recipies', 'sausage-roll', $this->user);
-
-        $tree = [
-            [
-                'entry' => $entryParent->id(),
-                'children' => [
-                    [
-                        'entry' => $entry->id(),
-                    ],
+        if (Site::all()->count() > 1) {
+            return [
+                'site' => [
+                    'type' => 'select',
+                    'instructions' => __('duplicator::messages.fields.site.instructions'),
+                    'validate' => 'required|in:'.Site::all()->keys()->join(','),
+                    'options' => Site::all()
+                        ->map(function (SitesSite $site) {
+                            return $site->name();
+                        })
+                        ->toArray(),
                 ],
-            ],
-        ];
+            ];
+        }
 
-        (new CollectionStructure)->collection($collection)
-            ->in('default')
-            ->tree($tree)
-            ->save();
-
-        $duplicate = $this->action->run(collect([$entry]), []);
-
-        $duplicateEntry = Entry::findBySlug('sausage-roll-duplicate', 'recipies');
-
-        // $this->assertIsObject($duplicateEntry);
-        // $this->assertSame($duplicateEntry->slug(), 'sausage-roll-duplicate');
-
-        // dd($duplicateEntry->id(), $collection->structure()->in('default')->tree());
-
-        // dump($collection->structure()->in('default')->tree(), $duplicateEntry->id());
-
-        // // assert is in correct place in array
-        // $this->assertSame($collection->structure()->in('default')->tree()[0]['entry'], $entryParent->id());
-        // $this->assertSame($collection->structure()->in('default')->tree()[0]['children'][0]['entry'], $entry->id());
-        // $this->assertSame($collection->structure()->in('default')->tree()[0]['children'][1]['entry'], $duplicateEntry->id());
+        return [];
     }
 
-    /** @test */
-    public function can_duplicate_entry_for_different_site()
+    public function visibleTo($item)
     {
-        $this->markTestIncomplete();
+        return $item instanceof AnEntry;
+    }
+
+    public function visibleToBulk($items)
+    {
+        return false;
+    }
+
+    public function run($items, $values)
+    {
+        collect($items)
+            ->each(function ($item) use ($values) {
+                if ($item instanceof AnEntry) {
+                    $itemParent = $this->getEntryInStructureTree($item->structure()->in($item->locale())->tree(), $item->id())[0]['entry'];
+
+                    $entry = Entry::make()
+                        ->collection($item->collection())
+                        ->blueprint($item->blueprint()->handle())
+                        ->locale(isset($values['site']) ? $values['site'] : $item->locale())
+                        ->published($item->published())
+                        ->slug($item->slug().__('duplicator::messages.duplicated_slug'))
+                        ->data($item->data()->merge([
+                            'title' => $item->data()->get('title').__('duplicator::messages.duplicated_title')
+                        ]));
+
+                    $entry->save();
+
+                    if ($itemParent && $itemParent !== $item->id()) {
+                        $entry->structure()
+                            ->in(isset($values['site']) ? $values['site'] : $item->locale())
+                            ->appendTo($itemParent, $entry)
+                            ->save();
+                    }
+                }
+            });
+    }
+
+    protected function getEntryInStructureTree(array $tree, string $entryId)
+    {
+        return collect($tree)
+            ->filter(function ($parent) use ($entryId) {
+                $entryMatches = $parent['entry'] === $entryId;
+                $childMatches = isset($parent['children']) ? $this->getEntryInStructureTree($parent['children'], $entryId) : false;
+
+                return $childMatches || $entryMatches;
+            })
+            ->toArray();
     }
 }
