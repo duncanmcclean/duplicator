@@ -67,6 +67,47 @@ class DuplicateActionTest extends TestCase
         $this->assertIsObject($duplicateEntry);
         $this->assertSame($duplicateEntry->slug(), 'fresh-guide-duplicate');
     }
+    
+    /** @test */
+    public function can_duplicate_entry_with_original_parent()
+    {
+        $collection = $this->makeCollection('recipies', 'Recipies');
+
+        $entryParent = $this->makeEntry('recipies', 'cheese-toastie', $this->user);
+        $entry = $this->makeEntry('recipies', 'sausage-roll', $this->user);
+
+        $tree = [
+            [
+                'entry' => $entryParent->id(),
+                'children' => [
+                    [
+                        'entry' => $entry->id(),
+                    ],
+                ],
+            ],
+        ];
+
+        (new CollectionStructure)->collection($collection)
+            ->in('default')
+            ->tree($tree)
+            ->save();
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('sausage-roll-duplicate', 'recipies');
+
+        // $this->assertIsObject($duplicateEntry);
+        // $this->assertSame($duplicateEntry->slug(), 'sausage-roll-duplicate');
+
+        // dd($duplicateEntry->id(), $collection->structure()->in('default')->tree());
+
+        // dump($collection->structure()->in('default')->tree(), $duplicateEntry->id());
+
+        // // assert is in correct place in array
+        // $this->assertSame($collection->structure()->in('default')->tree()[0]['entry'], $entryParent->id());
+        // $this->assertSame($collection->structure()->in('default')->tree()[0]['children'][0]['entry'], $entry->id());
+        // $this->assertSame($collection->structure()->in('default')->tree()[0]['children'][1]['entry'], $duplicateEntry->id());
+    }
 
     /** @test */
     public function can_duplicate_entry_for_different_site()
