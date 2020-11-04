@@ -50,7 +50,9 @@ class DuplicateAction extends Action
         collect($items)
             ->each(function ($item) use ($values) {
                 if ($item instanceof AnEntry) {
-                    $itemParent = $this->getEntryInStructureTree($item->structure()->in($item->locale())->tree(), $item->id())[0]['entry'];
+                    $itemParent = $item->structure()
+                        ? $this->getEntryInStructureTree($item->structure()->in($item->locale())->tree(), $item->id())[0]['entry']
+                        : null;
 
                     $entry = Entry::make()
                         ->collection($item->collection())
