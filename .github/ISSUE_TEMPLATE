@@ -1,38 +1,25 @@
 ---
-name: '🐛 Bug Report'
-about: Report a bug or other issue
-labels: bug
+name: 'Bug Report'
+about: Fill out a bug report to help improve Duplicator.
 ---
 
-Quick description of the bug...
+<!--
+    Please use the provided issue template.
+    It's all really helpful information to help fix your issue!
+-->
 
-If you can, add a screenshot of the bug and/or a link to the exception in Flare.
+A quick description of the issue you're facing.
 
-## Steps to reproduce
+If you can, please provide a screenshot of the issue or a link to the Flare exception, maybe even both.
 
-1. Go to this page
-2. Click on that
-3. Type in this
-4. See the bad red error
+## How to reproduce
 
-## Expected behaviour
+...
 
-I expected...
+## What I expected
 
-## Environment information
+...
 
-**Statamic version:** 3.0.0.-beta-{replace_me}
-_run `php please -V` to find it._
+## Environment
 
-**PHP version:** 7.{replace_me}
-_run `php -v` to find it_
-
-**Operating System:**
-- [ ] MacOS
-- [ ] Linux
-- [ ] Windows
-
-**Browser:**
-- [ ] Chrome
-- [ ] Firefox
-- [ ] Safari
+Copy the output of `php please support:details` into here.
