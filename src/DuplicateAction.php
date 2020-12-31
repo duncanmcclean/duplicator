@@ -2,6 +2,7 @@
 
 namespace DoubleThreeDigital\Duplicator;
 
+use Illuminate\Support\Str;
 use Statamic\Actions\Action;
 use Statamic\Contracts\Entries\Entry as AnEntry;
 use Statamic\Facades\Entry;
@@ -51,15 +52,16 @@ class DuplicateAction extends Action
             ->each(function ($item) use ($values) {
                 if ($item instanceof AnEntry) {
                     $itemParent = $this->getEntryParentFromStructure($item);
+                    $itemTitleAndSlug = $this->generateTitleAndSlug($item);
 
                     $entry = Entry::make()
                         ->collection($item->collection())
                         ->blueprint($item->blueprint()->handle())
                         ->locale(isset($values['site']) ? $values['site'] : $item->locale())
                         ->published($item->published())
-                        ->slug($item->slug().__('duplicator::messages.duplicated_slug'))
+                        ->slug($itemTitleAndSlug['slug'])
                         ->data($item->data()->merge([
-                            'title' => $item->data()->get('title').__('duplicator::messages.duplicated_title')
+                            'title' => $itemTitleAndSlug['title'],
                         ]));
 
                     $entry->save();
@@ -91,5 +93,42 @@ class DuplicateAction extends Action
         }
 
         return $parentEntry;
+    }
+
+    /**
+     * This method has been copied from the Duplicate Entry code in Statamic v2.
+     * It's been updated to also deal with entry titles.
+     */
+    protected function generateTitleAndSlug(AnEntry $entry, $attempt = 1)
+    {
+        $title = $entry->get('title');
+        $slug = $entry->slug();
+
+        if ($attempt == 1) {
+            $title = $title . __('duplicator::messages.duplicated_title');
+        }
+
+        if ($attempt !== 1) {
+            if (! Str::contains($title, __('duplicator::messages.duplicated_title'))) {
+                $title .= __('duplicator::messages.duplicated_title');
+            }
+
+            $title .= ' (' . $attempt . ')';
+        }
+
+        $slug .= '-' . $attempt;
+
+        // If the slug we've just built already exists, we'll try again, recursively.
+        if (Entry::findBySlug($slug, $entry->collection()->handle())) {
+            $generate = $this->generateTitleAndSlug($entry, $attempt + 1);
+
+            $title = $generate['title'];
+            $slug = $generate['slug'];
+        }
+
+        return [
+            'title' => $title,
+            'slug' => $slug,
+        ];
     }
 }
