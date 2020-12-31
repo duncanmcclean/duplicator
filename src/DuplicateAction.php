@@ -50,9 +50,7 @@ class DuplicateAction extends Action
         collect($items)
             ->each(function ($item) use ($values) {
                 if ($item instanceof AnEntry) {
-                    $itemParent = $item->structure()
-                        ? $this->getEntryInStructureTree($item->structure()->in($item->locale())->tree(), $item->id())[0]['entry']
-                        : null;
+                    $itemParent = $this->getEntryParentFromStructure($item);
 
                     $entry = Entry::make()
                         ->collection($item->collection())
@@ -69,22 +67,29 @@ class DuplicateAction extends Action
                     if ($itemParent && $itemParent !== $item->id()) {
                         $entry->structure()
                             ->in(isset($values['site']) ? $values['site'] : $item->locale())
-                            ->appendTo($itemParent, $entry)
+                            ->appendTo($itemParent->id(), $entry)
                             ->save();
                     }
                 }
             });
     }
 
-    protected function getEntryInStructureTree(array $tree, string $entryId)
+    protected function getEntryParentFromStructure(AnEntry $entry)
     {
-        return collect($tree)
-            ->filter(function ($parent) use ($entryId) {
-                $entryMatches = $parent['entry'] === $entryId;
-                $childMatches = isset($parent['children']) ? $this->getEntryInStructureTree($parent['children'], $entryId) : false;
+        if (! $entry->structure()) {
+            return null;
+        }
 
-                return $childMatches || $entryMatches;
-            })
-            ->toArray();
+        $parentEntry = $entry
+            ->structure()
+            ->in($entry->locale())
+            ->page($entry->id())
+            ->parent();
+
+        if (is_null($parentEntry) || $entry->structure()->in($entry->locale())->root() === $parentEntry->id()) {
+            return null;
+        }
+
+        return $parentEntry;
     }
 }
