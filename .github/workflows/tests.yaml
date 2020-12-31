@@ -6,28 +6,37 @@ on:
 
 jobs:
   php_tests:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        php: [8.0, 7.4, 7.3]
+        php: [8.0, 7.4]
+        laravel: [8.*, 7.*, 6.*]
+        statamic: [3.0.*]
+        os: [ubuntu-latest]
+        include:
+          - laravel: 8.*
+            testbench: 6.*
+          - laravel: 7.*
+            testbench: 5.*
+          - laravel: 6.*
+            testbench: 4.*
 
-    name: PHP ${{ matrix.php }}
+    name: ${{ matrix.php }} - ${{ matrix.statamic }} - ${{ matrix.laravel }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
-          coverage: none
 
       - name: Install dependencies
         run: |
-          composer validate
+          composer require "laravel/framework:${{ matrix.laravel }}" "statamic/cms:${{ matrix.statamic }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer install --no-interaction
 
       - name: Run PHPUnit
