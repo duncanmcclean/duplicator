@@ -31,7 +31,6 @@
         "nunomaduro/collision": "^4.2",
         "orchestra/testbench": "^5.0"
     },
-    "minimum-stability": "dev",
     "scripts": {
         "lint": [
             "php-cs-fixer fix ./src"
