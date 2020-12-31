@@ -63,10 +63,10 @@ class DuplicateActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$entry]), []);
 
-        $duplicateEntry = Entry::findBySlug('fresh-guide-duplicate', 'guides');
+        $duplicateEntry = Entry::findBySlug('fresh-guide-1', 'guides');
 
         $this->assertIsObject($duplicateEntry);
-        $this->assertSame($duplicateEntry->slug(), 'fresh-guide-duplicate');
+        $this->assertSame($duplicateEntry->slug(), 'fresh-guide-1');
     }
 
     /** @test */
@@ -95,7 +95,7 @@ class DuplicateActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$entry]), []);
 
-        $duplicateEntry = Entry::findBySlug('sausage-roll-duplicate', 'recipies');
+        $duplicateEntry = Entry::findBySlug('sausage-roll-1', 'recipies');
 
         // $this->assertIsObject($duplicateEntry);
         // $this->assertSame($duplicateEntry->slug(), 'sausage-roll-duplicate');
