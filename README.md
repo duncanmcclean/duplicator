@@ -4,7 +4,7 @@
 
 Duplicator makes it painless for content editors to duplicate existing entries, right from within the Statamic Control Panel.
 
-While Duplicator itself is free and doesn't require a license, you can [optionally donate to Duncan](https://duncanm.dev/donate), the developer behind it.
+While Duplicator itself is free and doesn't require a license, you can [optionally donate to Duncan](https://duncanm.dev/donate), the developer behind it to show your appreciation.
 
 ## Installation
 
