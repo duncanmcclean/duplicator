@@ -20,7 +20,7 @@ class ServiceProvider extends AddonServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'duplicator');
 
         $this->publishes([
-            __DIR__.'/resources/lang' => resource_path('lang/vendor/duplicator'),
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/duplicator'),
         ], 'duplicator-translations');
     }
 }
