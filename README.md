@@ -1,10 +1,10 @@
 ![Addon Demo](https://github.com/doublethreedigital/duplicator/raw/master/demo.gif)
 
-# Duplicator
+## Duplicator
 
 Duplicator makes it painless for content editors to duplicate existing entries, right from within the Statamic Control Panel.
 
-While Duplicator itself is free and doesn't require a license, you can [optionally donate to Duncan](https://duncanm.dev/donate), the developer behind it to show your appreciation.
+This repository contains the source code of Duplicator. While Duplicator itself is free and doesn't require a license, you can [donate to Duncan](https://duncanm.dev/donate), the developer behind it to show your appreciation.
 
 ## Installation
 
@@ -12,7 +12,9 @@ While Duplicator itself is free and doesn't require a license, you can [optional
 2. Publish the configuration file *(optional)* - `php artisan vendor:publish --tag="duplicator-config"`
 3. Start duplicating!
 
-## Configuration
+## Documentation
+
+### Configuration
 
 If you publish the configuration file during installation, the config file should be present at `config/duplicator.php`.
 
@@ -39,7 +41,7 @@ return [
 
 Currently, the configuration file allows you to configure defaults for duplicated entries. For example, if duplicated entries should be published or not. If not configured, it will fallback to the status of the entry being duplicated.
 
-## Usage
+### Usage
 
 > **🔥 Hot Tip:** Make sure you're on the `List` entries view, not the `Tree` one or else you won't see the `Duplicate` button.
 
@@ -48,12 +50,26 @@ Currently, the configuration file allows you to configure defaults for duplicate
 3. If you've got a multi-site setup, you'll be asked to select the site you wish to duplicate the entry to. Select and option and continue.
 4. The entry will then be duplicated!
 
-## Translations
+### Translations
 
 Duplicator provides localized translations in both English and French. If you need translations in another language, you can create them yourself.
 
 First, create the transalation file in `resources/lang/vendor/duplicator/{language}/messages.php`. You should be able to copy the [English translation file](https://github.com/doublethreedigital/duplicator/blob/master/resources/lang/en/messages.php) and make your changes from there.
 
-## Support
+## Security
 
-For developer support or any other questions related to this addon, please [get in touch](mailto:hello@doublethree.digital).
+From a security perspective, the latest version only will receive a security release if a vulnerability is found.
+
+If you discover a security vulnerability within Duplicator, please report it [via email](mailto:duncan@doublethree.digital) straight away. Please don't report security issues in the issue tracker.
+
+## Resources
+
+* [**Issue Tracker**](https://github.com/doublethreedigital/duplicator/issues): Find & report bugs in Duplicator
+* [**Email**](mailto:duncan@doublethree.digital): Support from the developer behind the addon
+
+---
+
+<p>
+<a href="https://statamic.com"><img src="https://img.shields.io/badge/Statamic-3.0+-FF269E?style=for-the-badge" alt="Compatible with Statamic v3"></a>
+<a href="https://packagist.org/packages/doublethreedigital/duplicator/stats"><img src="https://img.shields.io/packagist/v/doublethreedigital/duplicator?style=for-the-badge" alt="Duplicator on Packagist"></a>
+</p>
