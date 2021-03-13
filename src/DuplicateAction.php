@@ -73,8 +73,6 @@ class DuplicateAction extends Action
                             ->save();
                     }
                 }
-
-                throw new \Exception("Sorry, only entries can be duplicated.");
             });
     }
 
