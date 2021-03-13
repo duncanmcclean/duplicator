@@ -9,7 +9,35 @@ While Duplicator itself is free and doesn't require a license, you can [optional
 ## Installation
 
 1. Install via Composer - `composer require doublethreedigital/duplicator`
-2. Start duplicating!
+2. Publish the configuration file *(optional)* - `php artisan vendor:publish --tag="duplicator-config"`
+3. Start duplicating!
+
+## Configuration
+
+If you publish the configuration file during installation, the config file should be present at `config/duplicator.php`.
+
+```php
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Defaults
+    |--------------------------------------------------------------------------
+    |
+    | Set defaults for duplicated entries.
+    |
+    */
+
+    'defaults' => [
+        'published' => true,
+    ],
+
+];
+```
+
+Currently, the configuration file allows you to configure defaults for duplicated entries. For example, if duplicated entries should be published or not. If not configured, it will fallback to the status of the entry being duplicated.
 
 ## Usage
 
