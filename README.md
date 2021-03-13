@@ -20,5 +20,12 @@ While Duplicator itself is free and doesn't require a license, you can [optional
 3. If you've got a multi-site setup, you'll be asked to select the site you wish to duplicate the entry to. Select and option and continue.
 4. The entry will then be duplicated!
 
+## Localization
+
+Duplicator provides localized translations in both English and French. If you need translations in another language, you can create them yourself.
+
+First, create the transalation file in `resources/lang/vendor/duplicator/**{language}**/messages.php`. You should be able to copy the [English translation file](https://github.com/doublethreedigital/duplicator/blob/master/resources/lang/en/messages.php) and make your changes from there.
+
 ## Support
+
 For developer support or any other questions related to this addon, please [get in touch](mailto:hello@doublethree.digital).
