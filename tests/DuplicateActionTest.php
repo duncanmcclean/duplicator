@@ -111,6 +111,46 @@ class DuplicateActionTest extends TestCase
     }
 
     /** @test */
+    public function can_duplicate_entry_with_config_publish_state()
+    {
+        $this->markTestIncomplete();
+
+        Config::set('duplicator.defaults.published', false);
+
+        $collection = $this->makeCollection('blog', 'Blog');
+        $entry = $this->makeEntry('blog', 'hello-world', $this->user);
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('hello-world-1', 'blog');
+
+        $this->assertIsObject($duplicateEntry);
+        $this->assertSame($duplicateEntry->slug(), 'hello-world-1');
+        $this->assertSame($duplicateEntry->published(), false);
+    }
+
+    /** @test */
+    public function can_duplicate_entry_with_duplicated_entry_publish_state()
+    {
+        $this->markTestIncomplete();
+
+        Config::set('duplicator.defaults.published', null);
+
+        $collection = $this->makeCollection('blog', 'Blog');
+        $entry = $this->makeEntry('blog', 'hello-universe', $this->user);
+
+        $entry->published(false)->save();
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('hello-universe-1', 'blog');
+
+        $this->assertIsObject($duplicateEntry);
+        $this->assertSame($duplicateEntry->slug(), 'hello-universe-1');
+        $this->assertSame($duplicateEntry->published(), false);
+    }
+
+    /** @test */
     public function can_duplicate_entry_for_different_site()
     {
         $this->markTestIncomplete();
