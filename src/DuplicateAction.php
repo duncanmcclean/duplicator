@@ -58,7 +58,7 @@ class DuplicateAction extends Action
                         ->collection($item->collection())
                         ->blueprint($item->blueprint()->handle())
                         ->locale(isset($values['site']) ? $values['site'] : $item->locale())
-                        ->published($item->published())
+                        ->published(config('duplicator.defaults.published', $item->published()))
                         ->slug($itemTitleAndSlug['slug'])
                         ->data($item->data()->merge([
                             'title' => $itemTitleAndSlug['title'],

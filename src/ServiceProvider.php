@@ -11,6 +11,7 @@ class ServiceProvider extends AddonServiceProvider
         parent::boot();
 
         $this->handleTranslations();
+        $this->handleConfig();
 
         DuplicateAction::register();
     }
@@ -22,5 +23,14 @@ class ServiceProvider extends AddonServiceProvider
         $this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/duplicator'),
         ], 'duplicator-translations');
+    }
+
+    protected function handleConfig()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/duplicator.php', 'duplicator');
+
+        $this->publishes([
+            __DIR__.'/../config/duplicator.php' => config_path('duplicator.php'),
+        ], 'duplicator-config');
     }
 }
