@@ -33,4 +33,9 @@ class ServiceProvider extends AddonServiceProvider
             __DIR__.'/../config/duplicator.php' => config_path('duplicator.php'),
         ], 'duplicator-config');
     }
+    
+    protected function bootConfig()
+    {
+        return $this;
+    }
 }
