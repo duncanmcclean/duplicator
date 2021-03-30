@@ -43,7 +43,7 @@ class DuplicateAction extends Action
 
     public function visibleToBulk($items)
     {
-        return true;
+        return $this->visibleTo($items->first());
     }
 
     public function run($items, $values)
