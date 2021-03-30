@@ -6,14 +6,17 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    protected $actions = [
+        Actions\DuplicateEntryAction::class,
+    ];
+
     public function boot()
     {
         parent::boot();
 
         $this->handleTranslations();
         $this->handleConfig();
-
-        DuplicateAction::register();
+        $this->bootActions();
     }
 
     protected function handleTranslations()
@@ -33,7 +36,16 @@ class ServiceProvider extends AddonServiceProvider
             __DIR__.'/../config/duplicator.php' => config_path('duplicator.php'),
         ], 'duplicator-config');
     }
-    
+
+    protected function bootActions()
+    {
+        foreach ($this->actions as $class) {
+            $class::register();
+        }
+
+        return $this;
+    }
+
     protected function bootConfig()
     {
         return $this;

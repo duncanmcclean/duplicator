@@ -1,6 +1,6 @@
 <?php
 
-namespace DoubleThreeDigital\Duplicator;
+namespace DoubleThreeDigital\Duplicator\Actions;
 
 use Illuminate\Support\Str;
 use Statamic\Actions\Action;
@@ -9,7 +9,7 @@ use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
 use Statamic\Sites\Site as SitesSite;
 
-class DuplicateAction extends Action
+class DuplicateEntryAction extends Action
 {
     public static function title()
     {
