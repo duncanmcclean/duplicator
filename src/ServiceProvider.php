@@ -17,7 +17,6 @@ class ServiceProvider extends AddonServiceProvider
 
         $this->handleTranslations();
         $this->handleConfig();
-        $this->bootActions();
     }
 
     protected function handleTranslations()
@@ -36,15 +35,6 @@ class ServiceProvider extends AddonServiceProvider
         $this->publishes([
             __DIR__.'/../config/duplicator.php' => config_path('duplicator.php'),
         ], 'duplicator-config');
-    }
-
-    protected function bootActions()
-    {
-        foreach ($this->actions as $class) {
-            $class::register();
-        }
-
-        return $this;
     }
 
     protected function bootConfig()
