@@ -2,7 +2,7 @@
 
 ## Duplicator
 
-Duplicator makes it painless for content editors to duplicate existing entries, right from within the Statamic Control Panel.
+Duplicator makes it painless for content editors to duplicate existing entries & terms, right from within the Statamic Control Panel.
 
 This repository contains the source code of Duplicator. While Duplicator itself is free and doesn't require a license, you can [donate to Duncan](https://duncanmcclean.com/donate), the developer behind it to show your appreciation.
 
@@ -43,6 +43,8 @@ Currently, the configuration file allows you to configure defaults for duplicate
 
 ### Usage
 
+#### Collection Entries
+
 > **🔥 Hot Tip:** Make sure you're on the `List` entries view, not the `Tree` one or else you won't see the `Duplicate` button.
 
 1. Go to a Collection, and view the entries listing.
@@ -50,9 +52,15 @@ Currently, the configuration file allows you to configure defaults for duplicate
 3. If you've got a multi-site setup, you'll be asked to select the site you wish to duplicate the entry to. Select and option and continue.
 4. The entry will then be duplicated!
 
+#### Taxonomy Terms
+
+1. Go to a Taxonomy, and view the terms listing.
+2. Decide on the term you wish to duplicate. Click on the three dots to toggle a dropdown and click the `Duplicate` option.
+3. The term will then be duplicated!
+
 ### Translations
 
-Duplicator provides localized translations in both English and French. If you need translations in another language, you can create them yourself.
+Thanks to the community, Duplicator provides localized translations in English, French & Dutch. If you need translations in another language, you can create them yourself.
 
 First, create the transalation file in `resources/lang/vendor/duplicator/{language}/messages.php`. You should be able to copy the [English translation file](https://github.com/doublethreedigital/duplicator/blob/master/resources/lang/en/messages.php) and make your changes from there.
 
