@@ -8,6 +8,7 @@ class ServiceProvider extends AddonServiceProvider
 {
     protected $actions = [
         Actions\DuplicateEntryAction::class,
+        Actions\DuplicateTermAction::class,
     ];
 
     public function boot()
