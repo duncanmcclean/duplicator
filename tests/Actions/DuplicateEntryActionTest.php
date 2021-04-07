@@ -1,15 +1,16 @@
 <?php
 
-namespace DoubleThreeDigital\Duplicator\Tests;
+namespace DoubleThreeDigital\Duplicator\Tests\Actions;
 
-use DoubleThreeDigital\Duplicator\DuplicateAction;
+use DoubleThreeDigital\Duplicator\Actions\DuplicateEntryAction;
+use DoubleThreeDigital\Duplicator\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
 use Statamic\Sites\Sites;
 use Statamic\Structures\CollectionStructure;
 
-class DuplicateActionTest extends TestCase
+class DuplicateEntryActionTest extends TestCase
 {
     public $user;
     public $action;
@@ -19,7 +20,7 @@ class DuplicateActionTest extends TestCase
         parent::setUp();
 
         $this->user = $this->makeStandardUser();
-        $this->action = new DuplicateAction();
+        $this->action = new DuplicateEntryAction();
     }
 
     /** @test */

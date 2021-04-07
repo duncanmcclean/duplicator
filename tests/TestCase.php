@@ -99,17 +99,4 @@ abstract class TestCase extends OrchestraTestCase
 
         return Entry::findBySlug($slug, $collectionHandle);
     }
-
-    public function tearDown(): void
-    {
-        // Destroy the $app
-        if ($this->app) {
-            $this->callBeforeApplicationDestroyedCallbacks();
-
-            $this->app = null;
-        }
-
-       // Call parent teardown
-       parent::tearDown();
-    }
 }
