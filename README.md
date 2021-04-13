@@ -60,7 +60,7 @@ Currently, the configuration file allows you to configure defaults for duplicate
 
 ### Translations
 
-Thanks to the community, Duplicator provides localized translations in English, French & Dutch. If you need translations in another language, you can create them yourself.
+Thanks to the community, Duplicator provides localized translations in English, French, German & Dutch. If you need translations in another language, you can create them yourself.
 
 First, create the transalation file in `resources/lang/vendor/duplicator/{language}/messages.php`. You should be able to copy the [English translation file](https://github.com/doublethreedigital/duplicator/blob/master/resources/lang/en/messages.php) and make your changes from there.
 
