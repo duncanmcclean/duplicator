@@ -7,6 +7,7 @@ use Statamic\Providers\AddonServiceProvider;
 class ServiceProvider extends AddonServiceProvider
 {
     protected $actions = [
+        Actions\DuplicateAssetAction::class,
         Actions\DuplicateEntryAction::class,
         Actions\DuplicateTermAction::class,
     ];
