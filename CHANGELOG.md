@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+## v1.2.2
+
+### What's new?
+
+* You can now duplicate assets!
+
 ## v1.2.1
 
 * German Translation #25
