@@ -2,13 +2,13 @@
 
 ## Unreleased
 
-## v1.2.2 (2021-05-24)
+## v1.3.2 (2021-05-24)
 
 ### What's new?
 
 * You can now duplicate assets!
 
-## v1.2.1
+## v1.3.1
 
 * German Translation #25
 
