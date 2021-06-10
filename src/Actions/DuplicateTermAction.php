@@ -39,6 +39,10 @@ class DuplicateTermAction extends Action
                             'title' => $itemTitleAndSlug['title'],
                         ]));
 
+                    if (config('duplicator.fingerprint') === true) {
+                        $term->set('is_duplicate', true);
+                    }
+
                     $term->save();
                 }
             });
