@@ -12,6 +12,8 @@ use Statamic\Providers\StatamicServiceProvider;
 use Statamic\Statamic;
 use Statamic\Facades\Collection;
 use Statamic\Facades\Entry;
+use Statamic\Facades\Taxonomy;
+use Statamic\Facades\Term;
 use Statamic\Facades\User;
 use Statamic\Stache\Stache;
 
@@ -98,5 +100,27 @@ abstract class TestCase extends OrchestraTestCase
             ->save();
 
         return Entry::findBySlug($slug, $collectionHandle);
+    }
+
+    protected function makeTaxonomies(string $handle, string $name)
+    {
+        Taxonomy::make($handle)
+            ->title($name)
+            ->save();
+
+        return Taxonomy::findByHandle($handle);
+    }
+
+    protected function makeTerm(string $taxonomyHandle, string $slug, AuthUser $user)
+    {
+        Term::make($slug)
+            ->taxonomy($taxonomyHandle)
+            ->data([
+                'title' => 'Blah blah blah',
+                'text' => $this->faker->text,
+            ])
+            ->save();
+
+        return Term::findBySlug($slug, $taxonomyHandle);
     }
 }
