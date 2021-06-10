@@ -6,8 +6,6 @@ use DoubleThreeDigital\Duplicator\Actions\DuplicateEntryAction;
 use DoubleThreeDigital\Duplicator\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use Statamic\Facades\Entry;
-use Statamic\Facades\Site;
-use Statamic\Sites\Sites;
 use Statamic\Structures\CollectionStructure;
 
 class DuplicateEntryActionTest extends TestCase
@@ -155,5 +153,41 @@ class DuplicateEntryActionTest extends TestCase
     public function can_duplicate_entry_for_different_site()
     {
         $this->markTestIncomplete();
+    }
+
+    /** @test */
+    public function can_duplicate_entry_with_fingerprinting_enabled()
+    {
+        Config::set('duplicator.fingerprint', true);
+
+        $collection = $this->makeCollection('guides', 'Guides');
+        $entry = $this->makeEntry('guides', 'new-guide', $this->user);
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('new-guide-1', 'guides');
+
+        $this->assertIsObject($duplicateEntry);
+        $this->assertSame($duplicateEntry->slug(), 'new-guide-1');
+
+        $this->assertTrue($duplicateEntry->get('is_duplicate'));
+    }
+
+    /** @test */
+    public function can_duplicate_entry_with_fingerprinting_disabled()
+    {
+        Config::set('duplicator.fingerprint', false);
+
+        $collection = $this->makeCollection('guides', 'Guides');
+        $entry = $this->makeEntry('guides', 'news-guide', $this->user);
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('news-guide-1', 'guides');
+
+        $this->assertIsObject($duplicateEntry);
+        $this->assertSame($duplicateEntry->slug(), 'news-guide-1');
+
+        $this->assertNull($duplicateEntry->get('is_duplicate'));
     }
 }
