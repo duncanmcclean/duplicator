@@ -64,6 +64,10 @@ class DuplicateEntryAction extends Action
                             'title' => $itemTitleAndSlug['title'],
                         ]));
 
+                    if (config('duplicator.fingerprint') === true) {
+                        $entry->set('is_duplicate', true);
+                    }
+
                     $entry->save();
 
                     if ($itemParent && $itemParent !== $item->id()) {

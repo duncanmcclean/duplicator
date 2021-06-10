@@ -16,7 +16,13 @@ This repository contains the source code of Duplicator. While Duplicator itself 
 
 ### Configuration
 
-If you publish the configuration file during installation, the config file should be present at `config/duplicator.php`.
+If you optionally publish the configuration file during installation, it should be present at `config/duplicator.php`. If not, you may publish the config file with the following command:
+
+```
+php artisan vendor:publish --tag="duplicator-config"
+```
+
+The config file looks like this:
 
 ```php
 <?php
@@ -36,10 +42,25 @@ return [
         'published' => true,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Fingerprint
+    |--------------------------------------------------------------------------
+    |
+    | Should Duplicator leave a 'fingerprint' on each entry/term/asset it touches
+    | so you can tell if it's a duplicated entry or not?
+    |
+    */
+
+    'fingerprint' => false,
+
 ];
 ```
 
-Currently, the configuration file allows you to configure defaults for duplicated entries. For example, if duplicated entries should be published or not. If not configured, it will fallback to the status of the entry being duplicated.
+**Configuration options**
+
+* `defaults` - You can configure defaults for duplicated entries. For example, if duplicated entries should be published or not. If not configured, it will fallback to the status of the entry being duplicated.
+* `fingerprint` - Disabled by default. You can choose whether you'd like a 'fingerprint', in the way of an extra `is_duplicate` variable, to be added to entries/terms/assets duplicated by this addon.
 
 ### Usage
 
