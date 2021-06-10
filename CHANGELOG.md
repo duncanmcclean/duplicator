@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v1.3.3 (2021-06-10)
+
+### What's new
+
+* A 'fingerprint' toggle. [See documentation](https://github.com/doublethreedigital/duplicator#configuration) #27
+
 ## v1.3.2 (2021-05-24)
 
 ### What's new?
