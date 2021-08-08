@@ -94,7 +94,7 @@ If you discover a security vulnerability within Duplicator, please report it [vi
 ## Resources
 
 * [**Issue Tracker**](https://github.com/doublethreedigital/duplicator/issues): Find & report bugs in Duplicator
-* [**Email**](mailto:duncan@doublethree.digital): Support from the developer behind the addon
+* [**Email**](mailto:help@doublethree.digital): Support from the developer behind the addon
 
 ---
 
