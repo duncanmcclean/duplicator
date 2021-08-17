@@ -1,6 +1,10 @@
+<!-- statamic:hide -->
+
 ![Addon Demo](https://github.com/doublethreedigital/duplicator/raw/master/demo.gif)
 
 ## Duplicator
+
+<!-- /statamic:hide -->
 
 Duplicator makes it painless for content editors to duplicate existing entries & terms, right from within the Statamic Control Panel.
 
@@ -96,9 +100,13 @@ If you discover a security vulnerability within Duplicator, please report it [vi
 * [**Issue Tracker**](https://github.com/doublethreedigital/duplicator/issues): Find & report bugs in Duplicator
 * [**Email**](mailto:help@doublethree.digital): Support from the developer behind the addon
 
+<!-- statamic:hide -->
+
 ---
 
 <p>
 <a href="https://statamic.com"><img src="https://img.shields.io/badge/Statamic-3.0+-FF269E?style=for-the-badge" alt="Compatible with Statamic v3"></a>
 <a href="https://packagist.org/packages/doublethreedigital/duplicator/stats"><img src="https://img.shields.io/packagist/v/doublethreedigital/duplicator?style=for-the-badge" alt="Duplicator on Packagist"></a>
 </p>
+
+<!-- /statamic:hide -->
