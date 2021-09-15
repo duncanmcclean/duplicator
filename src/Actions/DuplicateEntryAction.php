@@ -60,13 +60,16 @@ class DuplicateEntryAction extends Action
                         ->locale(isset($values['site']) ? $values['site'] : $item->locale())
                         ->published(config('duplicator.defaults.published', $item->published()))
                         ->slug($itemTitleAndSlug['slug'])
-                        ->date($item->date())
                         ->data($item->data()->merge([
                             'title' => $itemTitleAndSlug['title'],
                         ]));
 
                     if (config('duplicator.fingerprint') === true) {
                         $entry->set('is_duplicate', true);
+                    }
+
+                    if (!is_int($item->date())) {
+                        $entry->date($item->date());
                     }
 
                     $entry->save();
