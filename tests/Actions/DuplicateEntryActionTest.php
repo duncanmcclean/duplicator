@@ -2,6 +2,7 @@
 
 namespace DoubleThreeDigital\Duplicator\Tests\Actions;
 
+use Carbon\Carbon;
 use DoubleThreeDigital\Duplicator\Actions\DuplicateEntryAction;
 use DoubleThreeDigital\Duplicator\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
@@ -66,6 +67,25 @@ class DuplicateEntryActionTest extends TestCase
 
         $this->assertIsObject($duplicateEntry);
         $this->assertSame($duplicateEntry->slug(), 'fresh-guide-1');
+    }
+
+    /** @test */
+    public function can_duplicate_entry_with_date()
+    {
+        $collection = $this->makeCollection('guides', 'Guides');
+        $entry = $this->makeEntry('guides', 'fresh-guide-smth', $this->user);
+
+        $entry = $entry->date(Carbon::parse('2021-08-08'));
+        $entry->save();
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('fresh-guide-smth-1', 'guides');
+
+        $this->assertIsObject($duplicateEntry);
+        $this->assertSame($duplicateEntry->slug(), 'fresh-guide-smth-1');
+
+        $this->assertTrue($duplicateEntry->hasDate());
     }
 
     /** @test */
