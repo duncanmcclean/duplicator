@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## v2.0.0 (2021-09-16)
+
+From **v2.0.0** onwards, Duplicator only supports Statamic 3.2 onwards.
+
+### What's fixed
+
+* Entry dates are now duplicated along with rest of entry #30
+* Fixed issue with collection trees in Statamic 3.2 #31
+
 ## v1.3.4 (2021-08-19)
 
 ### What's new
