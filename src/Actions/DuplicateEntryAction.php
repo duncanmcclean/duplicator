@@ -50,6 +50,7 @@ class DuplicateEntryAction extends Action
     {
         collect($items)
             ->each(function ($item) use ($values) {
+                /** @var \Statamic\Entries\Entry $item */
                 if ($item instanceof AnEntry) {
                     $itemParent = $this->getEntryParentFromStructure($item);
                     $itemTitleAndSlug = $this->generateTitleAndSlug($item);
@@ -64,12 +65,12 @@ class DuplicateEntryAction extends Action
                             'title' => $itemTitleAndSlug['title'],
                         ]));
 
-                    if (config('duplicator.fingerprint') === true) {
-                        $entry->set('is_duplicate', true);
+                    if ($item->hasDate()) {
+                        $entry->date($item->date());
                     }
 
-                    if (!is_int($item->date())) {
-                        $entry->date($item->date());
+                    if (config('duplicator.fingerprint') === true) {
+                        $entry->set('is_duplicate', true);
                     }
 
                     $entry->save();
