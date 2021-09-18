@@ -8,7 +8,7 @@
 
 Duplicator makes it painless for content editors to duplicate existing entries & terms, right from within the Statamic Control Panel.
 
-This repository contains the source code of Duplicator. While Duplicator itself is free and doesn't require a license, you can [donate to Duncan](https://duncanmcclean.com/donate), the developer behind it to show your appreciation.
+This repository contains the source code of Duplicator. While Duplicator is free and doesn't require you to purchase a license, consider [sponsoring Duncan](https://github.com/sponsors/duncanmcclean) to support the ongoing maintenance and development of new features.
 
 ## Installation
 
