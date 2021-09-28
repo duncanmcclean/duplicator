@@ -1,6 +1,6 @@
 <!-- statamic:hide -->
 
-![Addon Demo](https://github.com/doublethreedigital/duplicator/raw/master/demo.gif)
+![Banner](https://github.com/doublethreedigital/duplicator/raw/master/banner.png)
 
 ## Duplicator
 
