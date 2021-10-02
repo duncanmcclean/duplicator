@@ -26,7 +26,7 @@ Now you can start duplicating!
 
 ## Documentation
 
-Duplicator's documentation is available to view on the [Statamic Marketplace](https://statamic.com/addons/double-three-digital/duplicator/docs)
+Read the documentation over on the [Statamic Marketplace](https://statamic.com/addons/double-three-digital/duplicator/docs).
 
 ## Sponsor Duncan
 
