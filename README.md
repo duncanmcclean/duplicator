@@ -1,6 +1,6 @@
 <!-- statamic:hide -->
 
-![Banner](https://github.com/doublethreedigital/duplicator/raw/master/banner.png)
+![Banner](./banner.png)
 
 ## Duplicator
 
@@ -8,13 +8,21 @@
 
 Duplicator makes it painless for content editors to duplicate existing entries & terms, right from within the Statamic Control Panel.
 
-This repository contains the source code of Duplicator. While Duplicator is free and doesn't require you to purchase a license, consider [sponsoring Duncan](https://github.com/sponsors/duncanmcclean) to support the ongoing maintenance and development of new features.
-
 ## Installation
 
-1. Install via Composer - `composer require doublethreedigital/duplicator`
-2. Publish the configuration file *(optional)* - `php artisan vendor:publish --tag="duplicator-config"`
-3. Start duplicating!
+First, require Cookie Notice as a Composer dependency:
+
+```
+composer require doublethreedigital/duplicator
+```
+
+Optionally, you may publish Duplicator's configuration file:
+
+```
+php artisan vendor:publish --tag="duplicator-config"
+```
+
+Now you can start duplicating!
 
 ## Documentation
 
@@ -89,16 +97,18 @@ Thanks to the community, Duplicator provides localized translations in English, 
 
 First, create the transalation file in `resources/lang/vendor/duplicator/{language}/messages.php`. You should be able to copy the [English translation file](https://github.com/doublethreedigital/duplicator/blob/master/resources/lang/en/messages.php) and make your changes from there.
 
+## Sponsor Duncan
+
+This addon is open-source, meaning anyone can use this addon in their sites for **free**! 
+
+However, maintaining and developing new features for open-source projects can take quite a bit of time. If you're using Duplicator in your production environment, please [consider sponsoring me](https://github.com/sponsors/duncanmcclean) (Duncan McClean) for a couple dollars a month.
+
+
 ## Security
 
-From a security perspective, the latest version only will receive a security release if a vulnerability is found.
+Only the latest version of Duplicator (v2.0) will receive security updates if a vulnerability is found. 
 
-If you discover a security vulnerability within Duplicator, please report it [via email](mailto:duncan@doublethree.digital) straight away. Please don't report security issues in the issue tracker.
-
-## Resources
-
-* [**Issue Tracker**](https://github.com/doublethreedigital/duplicator/issues): Find & report bugs in Duplicator
-* [**Email**](mailto:help@doublethree.digital): Support from the developer behind the addon
+If you discover a security vulnerability, please report it to Duncan straight away, [via email](mailto:duncan@doublethree.digital). Please don't report security issues through GitHub Issues.
 
 <!-- statamic:hide -->
 
