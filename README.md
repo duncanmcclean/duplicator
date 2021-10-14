@@ -10,7 +10,7 @@ Duplicator makes it painless for content editors to duplicate existing entries &
 
 ## Installation
 
-First, require Cookie Notice as a Composer dependency:
+First, require Duplicator as a Composer dependency:
 
 ```
 composer require doublethreedigital/duplicator
