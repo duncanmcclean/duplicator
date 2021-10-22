@@ -97,7 +97,11 @@ class DuplicateEntryAction extends Action
             ->page($entry->id())
             ->parent();
 
-        if (is_null($parentEntry) || $entry->structure()->in($entry->locale())->root()['entry'] === $parentEntry->id()) {
+        if (! $parentEntry) {
+            return null;
+        }
+
+        if ($entry->structure()->expectsRoot() && $entry->structure()->in($entry->locale())->root()['entry'] === $parentEntry->id()) {
             return null;
         }
 
