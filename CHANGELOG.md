@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.0.1 (2021-10-22)
+
+### What's fixed
+
+* Fixed an issue with collections with a no-root structure
+
 ## v2.0.0 (2021-09-16)
 
 From **v2.0.0** onwards, Duplicator only supports Statamic 3.2 onwards.
