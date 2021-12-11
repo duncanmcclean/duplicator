@@ -27,7 +27,7 @@ class DuplicateAssetAction extends Action
     public function run($items, $values)
     {
         collect($items)
-            ->each(function ($item) use ($values) {
+            ->each(function ($item) {
                 if ($item instanceof Asset) {
                     $duplicatePath = str_replace($item->filename(), "{$item->filename()}-02", $item->path());
 

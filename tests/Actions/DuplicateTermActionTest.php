@@ -5,9 +5,7 @@ namespace DoubleThreeDigital\Duplicator\Tests\Actions;
 use DoubleThreeDigital\Duplicator\Actions\DuplicateTermAction;
 use DoubleThreeDigital\Duplicator\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
-use Statamic\Facades\Entry;
 use Statamic\Facades\Term;
-use Statamic\Structures\CollectionStructure;
 
 class DuplicateTermActionTest extends TestCase
 {
