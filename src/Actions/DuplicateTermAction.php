@@ -27,7 +27,7 @@ class DuplicateTermAction extends Action
     public function run($items, $values)
     {
         collect($items)
-            ->each(function ($item) use ($values) {
+            ->each(function ($item) {
                 if ($item instanceof Term) {
                     $itemTitleAndSlug = $this->generateTitleAndSlug($item);
 
@@ -58,7 +58,7 @@ class DuplicateTermAction extends Action
         $slug = $term->slug();
 
         if ($attempt == 1) {
-            $title = $title . __('duplicator::messages.duplicated_title');
+            $title = $title.__('duplicator::messages.duplicated_title');
         }
 
         if ($attempt !== 1) {
@@ -66,10 +66,10 @@ class DuplicateTermAction extends Action
                 $title .= __('duplicator::messages.duplicated_title');
             }
 
-            $title .= ' (' . $attempt . ')';
+            $title .= ' ('.$attempt.')';
         }
 
-        $slug .= '-' . $attempt;
+        $slug .= '-'.$attempt;
 
         // If the slug we've just built already exists, we'll try again, recursively.
         if (TermAPI::findBySlug($slug, $term->taxonomy()->handle())) {

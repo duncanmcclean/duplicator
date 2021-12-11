@@ -2,20 +2,20 @@
 
 namespace DoubleThreeDigital\Duplicator\Tests;
 
-use Statamic\Extend\Manifest;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use DoubleThreeDigital\Duplicator\ServiceProvider;
 use Illuminate\Foundation\Testing\WithFaker;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Statamic\Contracts\Auth\User as AuthUser;
+use Statamic\Extend\Manifest;
 use Statamic\Facades\Blueprint;
-use Statamic\Providers\StatamicServiceProvider;
-use Statamic\Statamic;
 use Statamic\Facades\Collection;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Taxonomy;
 use Statamic\Facades\Term;
 use Statamic\Facades\User;
+use Statamic\Providers\StatamicServiceProvider;
 use Statamic\Stache\Stache;
+use Statamic\Statamic;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -54,7 +54,7 @@ abstract class TestCase extends OrchestraTestCase
 
         $configs = [
             'assets', 'cp', 'forms', 'static_caching',
-            'sites', 'stache', 'system', 'users'
+            'sites', 'stache', 'system', 'users',
         ];
 
         foreach ($configs as $config) {
