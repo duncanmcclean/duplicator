@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "php": "^7.3 || ^7.4 || ^8.0",
+        "php": "^7.4 || ^8.0 || ^8.1",
         "statamic/cms": "3.2.*"
     },
     "require-dev": {
@@ -42,6 +42,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "pixelfear/composer-dist-plugin": true
+        }
     }
 }
