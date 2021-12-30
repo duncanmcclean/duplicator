@@ -16,13 +16,10 @@ jobs:
         os: [ubuntu-latest]
         include:
           - laravel: 8.*
-            framework: ^8.24.0
             testbench: 6.*
           - laravel: 7.*
-            framework: ^7.30.4
             testbench: 5.*
           - laravel: 6.*
-            framework: ^6.20.14
             testbench: 4.*
         exclude:
           - laravel: 8.*
@@ -37,6 +34,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
+
+      - name: Yeet out the composer lock file
+        run: rm composer.lock
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
