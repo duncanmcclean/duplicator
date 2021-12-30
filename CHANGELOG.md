@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## v2.1.0 (2021-12-30)
+
+### What's new
+
+* PHP 8.1 Support #35
+
+### Breaking changes
+
+* Dropped Laravel 6 support
+* Dropped PHP 7.3 support
+
 ## v2.0.1 (2021-10-22)
 
 ### What's fixed
