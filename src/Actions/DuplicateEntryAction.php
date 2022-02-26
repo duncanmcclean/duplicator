@@ -23,7 +23,7 @@ class DuplicateEntryAction extends Action
                 'site' => [
                     'type' => 'select',
                     'instructions' => __('duplicator::messages.fields.site.instructions'),
-                    'validate' => 'required|in:'.Site::all()->keys()->join(','),
+                    'validate' => 'required|in:' . Site::all()->keys()->join(','),
                     'options' => Site::all()
                         ->map(function (SitesSite $site) {
                             return $site->name();
@@ -118,7 +118,7 @@ class DuplicateEntryAction extends Action
         $slug = $entry->slug();
 
         if ($attempt == 1) {
-            $title = $title.__('duplicator::messages.duplicated_title');
+            $title = $title . __('duplicator::messages.duplicated_title');
         }
 
         if ($attempt !== 1) {
@@ -126,10 +126,10 @@ class DuplicateEntryAction extends Action
                 $title .= __('duplicator::messages.duplicated_title');
             }
 
-            $title .= ' ('.$attempt.')';
+            $title .= ' (' . $attempt . ')';
         }
 
-        $slug .= '-'.$attempt;
+        $slug .= '-' . $attempt;
 
         // If the slug we've just built already exists, we'll try again, recursively.
         if (Entry::findBySlug($slug, $entry->collection()->handle())) {
