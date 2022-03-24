@@ -6,7 +6,7 @@
 
 <!-- /statamic:hide -->
 
-Duplicator makes it painless for content editors to duplicate existing entries & terms, right from within the Statamic Control Panel.
+Duplicator makes it painless for content editors to duplicate existing entries, terms & assets from within the Statamic Control Panel.
 
 ## Installation
 
