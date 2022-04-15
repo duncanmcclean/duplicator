@@ -10,7 +10,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   release:
@@ -46,3 +46,11 @@ jobs:
           release_name: ${{ github.ref }}
           body: ${{ steps.changelog.outputs.text }}
           prerelease: ${{ contains(github.ref, '-beta') }}
+
+      - name: Comment on related issues
+        uses: duncanmcclean/post-release-comments@v1.0.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version: ${{ github.ref }}
+          changelog: ${{ steps.changelog.outputs.text }}
