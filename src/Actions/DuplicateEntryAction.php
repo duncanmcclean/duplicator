@@ -61,9 +61,14 @@ class DuplicateEntryAction extends Action
                         ->locale(isset($values['site']) ? $values['site'] : $item->locale())
                         ->published(config('duplicator.defaults.published', $item->published()))
                         ->slug($itemTitleAndSlug['slug'])
-                        ->data($item->data()->merge([
-                            'title' => $itemTitleAndSlug['title'],
-                        ]));
+                        ->data(
+                            $item->data()
+                                ->except(config("duplicator.ignored_fields.entries.{$item->collectionHandle()}"))
+                                ->merge([
+                                    'title' => $itemTitleAndSlug['title'],
+                                ])
+                                ->toArray()
+                        );
 
                     if ($item->hasDate()) {
                         $entry->date($item->date());

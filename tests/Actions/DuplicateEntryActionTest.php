@@ -179,6 +179,26 @@ class DuplicateEntryActionTest extends TestCase
     }
 
     /** @test */
+    public function can_duplicate_entry_with_ignored_field()
+    {
+        Config::set('duplicator.ignored_fields.entries.guides', ['special_guide']);
+
+        $collection = $this->makeCollection('guides', 'Guides');
+        $entry = $this->makeEntry('guides', 'fresh-guide', $this->user);
+
+        $entry->set('special_guide', true);
+        $entry->save();
+
+        $duplicate = $this->action->run(collect([$entry]), []);
+
+        $duplicateEntry = Entry::findBySlug('fresh-guide-1', 'guides');
+
+        $this->assertIsObject($duplicateEntry);
+        $this->assertSame($duplicateEntry->slug(), 'fresh-guide-1');
+        $this->assertNull($duplicateEntry->get('special_guide'));
+    }
+
+    /** @test */
     public function can_duplicate_entry_with_fingerprinting_enabled()
     {
         Config::set('duplicator.fingerprint', true);
