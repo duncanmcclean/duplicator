@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v2.2.0 (2022-04-15)
+
+### What's new
+
+- You may now ignore certain fields when duplicating #39 #42 by @duncanmcclean
+- You may now duplicate entries to all sites, in addition to just a specific one #41 #43 by @duncanmcclean
+
 ## v2.1.1 (2022-02-26)
 
 ### What's new
