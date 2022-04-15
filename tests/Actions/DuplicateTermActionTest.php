@@ -112,6 +112,26 @@ class DuplicateTermActionTest extends TestCase
     }
 
     /** @test */
+    public function can_duplicate_term_with_ignored_fields()
+    {
+        Config::set('duplicator.ignored_fields.terms.categories', ['special_category']);
+
+        $taxonomy = $this->makeTaxonomies('categories', 'Categories');
+        $term = $this->makeTerm('categories', 'haggis', $this->user);
+
+        $term->set('special_category', 'special');
+        $term->save();
+
+        $duplicate = $this->action->run(collect([$term]), []);
+
+        $duplicateTerm = Term::findBySlug('haggis-1', 'categories');
+
+        $this->assertIsObject($duplicateTerm);
+        $this->assertSame($duplicateTerm->slug(), 'haggis-1');
+        $this->assertNull($duplicateTerm->get('special_category'));
+    }
+
+    /** @test */
     public function can_duplicate_entry_with_fingerprinting_enabled()
     {
         Config::set('duplicator.fingerprint', true);

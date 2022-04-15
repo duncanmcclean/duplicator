@@ -35,9 +35,14 @@ class DuplicateTermAction extends Action
                         ->taxonomy($item->taxonomy())
                         ->blueprint($item->blueprint()->handle())
                         ->slug($itemTitleAndSlug['slug'])
-                        ->data($item->data()->merge([
-                            'title' => $itemTitleAndSlug['title'],
-                        ]));
+                        ->data(
+                            $item->data()
+                                ->except(config("duplicator.ignored_fields.terms.{$item->taxonomyHandle()}"))
+                                ->merge([
+                                    'title' => $itemTitleAndSlug['title'],
+                                ])
+                                ->toArray()
+                        );
 
                     if (config('duplicator.fingerprint') === true) {
                         $term->set('is_duplicate', true);
@@ -58,7 +63,7 @@ class DuplicateTermAction extends Action
         $slug = $term->slug();
 
         if ($attempt == 1) {
-            $title = $title.__('duplicator::messages.duplicated_title');
+            $title = $title . __('duplicator::messages.duplicated_title');
         }
 
         if ($attempt !== 1) {
@@ -66,10 +71,10 @@ class DuplicateTermAction extends Action
                 $title .= __('duplicator::messages.duplicated_title');
             }
 
-            $title .= ' ('.$attempt.')';
+            $title .= ' (' . $attempt . ')';
         }
 
-        $slug .= '-'.$attempt;
+        $slug .= '-' . $attempt;
 
         // If the slug we've just built already exists, we'll try again, recursively.
         if (TermAPI::findBySlug($slug, $term->taxonomy()->handle())) {
