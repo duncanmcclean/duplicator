@@ -23,12 +23,14 @@ class DuplicateEntryAction extends Action
                 'site' => [
                     'type' => 'select',
                     'instructions' => __('duplicator::messages.fields.site.instructions'),
-                    'validate' => 'required|in:' . Site::all()->keys()->join(','),
+                    'validate' => 'required|in:all,' . Site::all()->keys()->join(','),
                     'options' => Site::all()
                         ->map(function (SitesSite $site) {
                             return $site->name();
                         })
+                        ->prepend('All Sites', 'all')
                         ->toArray(),
+                    'default' => 'all',
                 ],
             ];
         }
@@ -58,7 +60,7 @@ class DuplicateEntryAction extends Action
                     $entry = Entry::make()
                         ->collection($item->collection())
                         ->blueprint($item->blueprint()->handle())
-                        ->locale(isset($values['site']) ? $values['site'] : $item->locale())
+                        ->locale(isset($values['site']) && $values['site'] !== 'all' ? $values['site'] : $item->locale())
                         ->published(config('duplicator.defaults.published', $item->published()))
                         ->slug($itemTitleAndSlug['slug'])
                         ->data(
@@ -82,9 +84,19 @@ class DuplicateEntryAction extends Action
 
                     if ($itemParent && $itemParent !== $item->id()) {
                         $entry->structure()
-                            ->in(isset($values['site']) ? $values['site'] : $item->locale())
+                            ->in(isset($values['site']) && $values['site'] !== 'all' ? $values['site'] : $item->locale())
                             ->appendTo($itemParent->id(), $entry)
                             ->save();
+                    }
+
+                    if (isset($values['site']) && $values['site'] === 'all') {
+                        Site::all()
+                            ->reject(function ($site) use ($entry) {
+                                return $site->handle() === $entry->locale();
+                            })
+                            ->each(function ($site) use ($entry) {
+                                $entry->makeLocalization($site->handle())->save();
+                            });
                     }
                 }
             });
