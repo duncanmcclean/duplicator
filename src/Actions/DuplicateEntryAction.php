@@ -28,7 +28,7 @@ class DuplicateEntryAction extends Action
                         ->map(function (SitesSite $site) {
                             return $site->name();
                         })
-                        ->prepend('All Sites', 'all')
+                        ->prepend(__('duplicator::messages.fields.site.all_sites'), 'all')
                         ->toArray(),
                     'default' => 'all',
                 ],
