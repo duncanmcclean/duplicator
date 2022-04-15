@@ -91,6 +91,14 @@ return [
 3. If you've got a multi-site setup, you'll be asked to select the site you wish to duplicate the entry to. Select and option and continue.
 4. The entry will then be duplicated!
 
+### Forms
+
+> **Note:** The fingerprint feature isn't available for forms as they don't allow for storing extra bits of data.
+
+1. Go to the 'Forms' page within the Control Panel
+2. Decide on the form you wish to duplicate. Click on the three dots to toggle a dropdown and click the `Duplicate` option.
+3. The form will then be duplicated!
+
 ### Taxonomy Terms
 
 1. Go to a Taxonomy, and view the terms listing.
