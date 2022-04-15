@@ -2,6 +2,7 @@
 
 namespace DoubleThreeDigital\Duplicator\Actions;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Statamic\Actions\Action;
 use Statamic\Contracts\Assets\Asset;
@@ -32,6 +33,7 @@ class DuplicateAssetAction extends Action
                     $duplicatePath = str_replace($item->filename(), "{$item->filename()}-02", $item->path());
 
                     $assetMeta = $item->meta();
+                    $assetMeta['data'] = Arr::except($assetMeta['data'], config('duplicator.ignored_fields.assets'));
 
                     if (config('duplicator.fingerprint') === true) {
                         $assetMeta['is_duplicate'] = true;
