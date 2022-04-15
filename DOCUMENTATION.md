@@ -76,6 +76,12 @@ return [
 
 ## Usage
 
+### Assets
+
+1. Go to the 'Assets' page within the Control Panel
+2. Decide on the asset you wish to duplicate, then click on the asset. You should get the option to 'Duplicate' the asset.
+3. The asset will then be duplicated.
+
 ### Collection Entries
 
 > **🔥 Hot Tip:** Make sure you're on the `List` entries view, not the `Tree` one or else you won't see the `Duplicate` button.
