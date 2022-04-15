@@ -28,6 +28,33 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Ignored fields
+    |--------------------------------------------------------------------------
+    |
+    | Configure any fields which should be ignored when duplicating items.
+    |
+    */
+
+    'ignored_fields' => [
+        'assets' => [
+            // 'field_handle',
+        ],
+
+        'entries' => [
+            // 'collection_handle' => [
+            //     'field_handle',
+            // ],
+        ],
+
+        'terms' => [
+            // 'taxonomy_handle' => [
+            //     'field_handle',
+            // ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Fingerprint
     |--------------------------------------------------------------------------
     |
@@ -43,8 +70,9 @@ return [
 
 **Configuration options**
 
-* `defaults` - You can configure defaults for duplicated entries. For example, if duplicated entries should be published or not. If not configured, it will fallback to the status of the entry being duplicated.
-* `fingerprint` - Disabled by default. You can choose whether you'd like a 'fingerprint', in the way of an extra `is_duplicate` variable, to be added to entries/terms/assets duplicated by this addon.
+- `defaults` - You can configure defaults for duplicated entries. For example, if duplicated entries should be published or not. If not configured, it will fallback to the status of the entry being duplicated.
+- `ignored_fields` - You can configure any fields you wish to be ignored when duplicating entries/terms/assets. You may set different ignored fields per collection/taxonomy.
+- `fingerprint` - Disabled by default. You can choose whether you'd like a 'fingerprint', in the way of an extra `is_duplicate` variable, to be added to entries/terms/assets duplicated by this addon.
 
 ## Usage
 
