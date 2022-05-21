@@ -8,6 +8,8 @@
 
 Duplicator makes it painless for content editors to duplicate existing entries, terms & assets from within the Statamic Control Panel.
 
+If you want to learn how Duplicator works under the hood, I've written [a blog post just for you](https://duncanmcclean.com/under-the-hood-of-the-duplicator-addon?ref=duplicator-readme).
+
 ## Installation
 
 First, require Duplicator as a Composer dependency:
