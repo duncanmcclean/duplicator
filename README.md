@@ -6,7 +6,7 @@
 
 <!-- /statamic:hide -->
 
-Duplicator makes it painless for content editors to duplicate existing entries, terms & assets from within the Statamic Control Panel.
+Duplicator makes it seemless for content editors to duplicate entries, terms, assets & forms from inside the Statamic Control Panel.
 
 If you want to learn how Duplicator works under the hood, I've written [a blog post just for you](https://duncanmcclean.com/under-the-hood-of-the-duplicator-addon?ref=duplicator-readme).
 
@@ -32,14 +32,13 @@ Read the documentation over on the [Statamic Marketplace](https://statamic.com/a
 
 ## Sponsor Duncan
 
-This addon is open-source, meaning anyone can use this addon in their sites for **free**! 
+This addon is open-source, meaning anyone can use this addon in their sites for **free**!
 
 However, maintaining and developing new features for open-source projects can take quite a bit of time. If you're using Duplicator in your production environment, please [consider sponsoring me](https://github.com/sponsors/duncanmcclean) (Duncan McClean) for a couple dollars a month.
 
-
 ## Security
 
-Only the latest version of Duplicator (v2.0) will receive security updates if a vulnerability is found. 
+Only the latest version of Duplicator (v2.0) will receive security updates if a vulnerability is found.
 
 If you discover a security vulnerability, please report it to Duncan straight away, [via email](mailto:security@doublethree.digital). Please don't report security issues through GitHub Issues.
 
