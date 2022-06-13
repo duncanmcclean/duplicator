@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.3.0 (2022-06-13)
+
+### What's new
+
+- You can now duplicate **Forms!** 🎉 #38 #44 by @duncanmcclean
+
 ## v2.2.0 (2022-04-15)
 
 ### What's new
