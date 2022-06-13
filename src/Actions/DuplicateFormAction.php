@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Statamic\Actions\Action;
 use Statamic\Contracts\Forms\Form;
 use Statamic\Facades\Form as FormAPI;
+use Statamic\Statamic;
 
 class DuplicateFormAction extends Action
 {
@@ -16,7 +17,8 @@ class DuplicateFormAction extends Action
 
     public function visibleTo($item)
     {
-        return $item instanceof Form;
+        return $item instanceof Form
+            && Statamic::pro();
     }
 
     public function visibleToBulk($items)
