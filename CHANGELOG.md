@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.3.1 (2022-06-20)
+
+### What's fixed
+
+- Fixed an issue where the Duplicate action could (in theory) show on Forms, even if the site isn't on a high enough Statamic version for it to work
+
 ## v2.3.0 (2022-06-13)
 
 ### What's new
