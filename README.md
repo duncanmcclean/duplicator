@@ -10,6 +10,8 @@ Duplicator makes it seamlessly for content editors to duplicate entries, terms, 
 
 If you want to learn how Duplicator works under the hood, I've written [a blog post just for you](https://duncanmcclean.com/under-the-hood-of-the-duplicator-addon?ref=duplicator-readme).
 
+> Hopefully soon, Duplicator will be part of Statamic Core - meaning you won't need this addon anymore. Feel free to go and [give the PR a big 👍](https://github.com/statamic/cms/pull/6307)
+
 ## Installation
 
 First, require Duplicator as a Composer dependency:
@@ -38,7 +40,7 @@ However, maintaining and developing new features for open-source projects can ta
 
 ## Security
 
-Only the latest version of Duplicator (v2.0) will receive security updates if a vulnerability is found.
+Only the latest version of Duplicator (v2.3) will receive security updates if a vulnerability is found.
 
 If you discover a security vulnerability, please report it to Duncan straight away, [via email](mailto:security@doublethree.digital). Please don't report security issues through GitHub Issues.
 
