@@ -41,8 +41,10 @@ class DuplicateAssetAction extends Action
 
                     $asset = AssetAPI::make()
                         ->container($item->container()->handle())
-                        ->path($duplicatePath)
-                        ->writeMeta($assetMeta);
+                        ->path($duplicatePath);
+
+                    $asset->save();
+                    $asset->writeMeta($assetMeta);
 
                     Storage::disk($item->container()->diskHandle())->copy($item->path(), $duplicatePath);
                 }
