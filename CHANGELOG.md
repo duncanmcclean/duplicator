@@ -69,7 +69,7 @@ From **v2.0.0** onwards, Duplicator only supports Statamic 3.2 onwards.
 
 ### What's new
 
-- A 'fingerprint' toggle. [See documentation](https://github.com/doublethreedigital/duplicator#configuration) #27
+- A 'fingerprint' toggle. [See documentation](https://github.com/duncanmcclean/duplicator#configuration) #27
 
 ## v1.3.2 (2021-05-24)
 

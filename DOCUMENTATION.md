@@ -109,4 +109,4 @@ return [
 
 Thanks to the community, Duplicator provides localized translations in English, French, German & Dutch. If you need translations in another language, you can create them yourself.
 
-First, create the transalation file in `resources/lang/vendor/duplicator/{language}/messages.php`. You should be able to copy the [English translation file](https://github.com/doublethreedigital/duplicator/blob/master/resources/lang/en/messages.php) and make your changes from there.
+First, create the transalation file in `resources/lang/vendor/duplicator/{language}/messages.php`. You should be able to copy the [English translation file](https://github.com/duncanmcclean/duplicator/blob/main/resources/lang/en/messages.php) and make your changes from there.

@@ -34,7 +34,7 @@ Review the documentation on the [Statamic Marketplace](https://statamic.com/addo
 
 ## Support
 
-Duplicator is a free addon, because of this there is no direct support channel. If you have a feature request or experience a bug, please [open a GitHub Issue](https://github.com/doublethreedigital/duplicator/issues/new/choose) and it'll be looked into over the next week or two.
+Duplicator is a free addon, because of this there is no direct support channel. If you have a feature request or experience a bug, please [open a GitHub Issue](https://github.com/duncanmcclean/duplicator/issues/new/choose) and it'll be looked into over the next week or two.
 
 > Only the latest version of this addon is supported. If you open a bug report using an old version, your issue will be closed.
 
