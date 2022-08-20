@@ -30,7 +30,7 @@ Now you can start duplicating!
 
 ## Documentation
 
-Review the documentation on the [Statamic Marketplace](https://statamic.com/addons/double-three-digital/duplicator/docs).
+Review the documentation on the [Statamic Marketplace](https://statamic.com/addons/duncanmcclean/duplicator/docs).
 
 ## Support
 
