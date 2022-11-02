@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.3.3 (2022-11-02)
+
+### What's improved
+
+- Updated German translation #52
+
 ## v2.3.2 (2022-08-18)
 
 ### What's fixed
