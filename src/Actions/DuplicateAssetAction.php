@@ -32,21 +32,23 @@ class DuplicateAssetAction extends Action
                 if ($item instanceof Asset) {
                     $duplicatePath = str_replace($item->filename(), "{$item->filename()}-02", $item->path());
 
-                    $assetMeta = $item->meta();
-                    $assetMeta['data'] = Arr::except($assetMeta['data'], config('duplicator.ignored_fields.assets'));
+                    $assetData = Arr::except(
+                        $item->data(),
+                        config('duplicator.ignored_fields.assets')
+                    );
 
                     if (config('duplicator.fingerprint') === true) {
-                        $assetMeta['is_duplicate'] = true;
+                        $assetData['is_duplicate'] = true;
                     }
+
+                    Storage::disk($item->container()->diskHandle())->copy($item->path(), $duplicatePath);
 
                     $asset = AssetAPI::make()
                         ->container($item->container()->handle())
-                        ->path($duplicatePath);
+                        ->path($duplicatePath)
+                        ->data($assetData);
 
                     $asset->save();
-                    $asset->writeMeta($assetMeta);
-
-                    Storage::disk($item->container()->diskHandle())->copy($item->path(), $duplicatePath);
                 }
             });
     }
