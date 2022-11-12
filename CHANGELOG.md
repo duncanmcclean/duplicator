@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v2.3.4 (2022-11-12)
+
+### What's fixed
+
+- Fixed an issue where duplicating an Asset wouldn't work when you have the Stache Watcher disabled (again!) #49 #53
+
 ## v2.3.3 (2022-11-02)
 
 ### What's improved
