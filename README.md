@@ -6,11 +6,11 @@
 
 <!-- /statamic:hide -->
 
+> This addon has been archived. Duplicator is now part of Statamic Core (as of [v3.3.59](https://github.com/statamic/cms/releases/tag/v3.3.59)).
+
 Duplicator makes it seamlessly for content editors to duplicate entries, terms, assets & forms from inside the Statamic Control Panel.
 
 If you want to learn how Duplicator works under the hood, I've written [a blog post just for you](https://duncanmcclean.com/under-the-hood-of-the-duplicator-addon?ref=duplicator-readme).
-
-> Hopefully soon, Duplicator will be part of Statamic Core - meaning you won't need this addon anymore. Feel free to go and [give the PR a big 👍](https://github.com/statamic/cms/pull/6307)
 
 ## Installation
 
