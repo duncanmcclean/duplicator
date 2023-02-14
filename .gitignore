@@ -7,5 +7,5 @@ package-lock.json
 .idea
 tests/__fixtures__/users/*.yaml
 tests/__fixtures__/content/collections/*.yaml
-tests/__fixtures__/content/collections/*/*.md
+tests/__fixtures__/content/collections/**/*.md
 composer.lock
