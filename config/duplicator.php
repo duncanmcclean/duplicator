@@ -25,10 +25,6 @@ return [
     */
 
     'ignored_fields' => [
-        'assets' => [
-            // 'field_handle',
-        ],
-
         'entries' => [
             // 'collection_handle' => [
             //     'field_handle',
