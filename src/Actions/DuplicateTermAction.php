@@ -5,6 +5,7 @@ namespace DoubleThreeDigital\Duplicator\Actions;
 use Illuminate\Support\Str;
 use Statamic\Actions\Action;
 use Statamic\Contracts\Taxonomies\Term;
+use Statamic\Facades\Site;
 use Statamic\Facades\Term as TermAPI;
 
 class DuplicateTermAction extends Action
@@ -16,7 +17,8 @@ class DuplicateTermAction extends Action
 
     public function visibleTo($item)
     {
-        return $item instanceof Term;
+        return $item instanceof Term
+            && Site::hasMultiple();
     }
 
     public function visibleToBulk($items)
