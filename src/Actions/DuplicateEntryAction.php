@@ -40,7 +40,8 @@ class DuplicateEntryAction extends Action
 
     public function visibleTo($item)
     {
-        return $item instanceof AnEntry;
+        return $item instanceof AnEntry
+            && Site::hasMultiple();
     }
 
     public function visibleToBulk($items)

@@ -64,6 +64,19 @@ abstract class TestCase extends OrchestraTestCase
         $app['config']->set('statamic.users.repository', 'file');
         $app['config']->set('statamic.stache', require(__DIR__.'/__fixtures__/config/statamic/stache.php'));
 
+        $app['config']->set('statamic.sites.sites', [
+            'default' => [
+                'name' => config('app.name'),
+                'locale' => 'en_US',
+                'url' => '/',
+            ],
+            'french' => [
+                'name' => config('app.name'),
+                'locale' => 'fr_FR',
+                'url' => '/fr',
+            ],
+        ]);
+
         Blueprint::setDirectory(__DIR__.'/__fixtures__/resources/blueprints');
     }
 

@@ -6,13 +6,13 @@
 
 <!-- /statamic:hide -->
 
-> This addon has been archived. Duplicator is now part of Statamic Core (as of [v3.3.59](https://github.com/statamic/cms/releases/tag/v3.3.59)).
+**This addon has been archived - it's functionality is now part of Statamic Core (as of [v3.3.59](https://github.com/statamic/cms/releases/tag/v3.3.59)).**
 
-Duplicator makes it seamlessly for content editors to duplicate entries, terms, assets & forms from inside the Statamic Control Panel.
-
-If you want to learn how Duplicator works under the hood, I've written [a blog post just for you](https://duncanmcclean.com/under-the-hood-of-the-duplicator-addon?ref=duplicator-readme).
+**If you're running a multi-site,** you'll probably want to keep this addon installed for now as the Duplicate functionality within Statamic doesn't yet support multi-site. Please add your 👍 to the feature request on [statamic/ideas](https://github.com/statamic/ideas/issues/942).
 
 ## Installation
+
+> If you're not using multi-site, please update to Statamic 3.3.59 or above instead of installing this addon.
 
 First, require Duplicator as a Composer dependency:
 
@@ -20,38 +20,37 @@ First, require Duplicator as a Composer dependency:
 composer require doublethreedigital/duplicator
 ```
 
-Optionally, you may publish Duplicator's configuration file:
-
-```
-php artisan vendor:publish --tag="duplicator-config"
-```
-
 Now you can start duplicating!
 
-## Documentation
+## Usage
 
-Review the documentation on the [Statamic Marketplace](https://statamic.com/addons/duncanmcclean/duplicator/docs).
+### Collection Entries
+
+> **🔥 Hot Tip:** Make sure you're on the `List` entries view, not the `Tree` one or else you won't see the `Duplicate` button.
+
+1. Go to a Collection, and view the entries listing.
+2. Decide on the entry you wish to duplicate. Click the three dots to toggle a dropdown and click the `Duplicate` option.
+3. If you've got a multi-site setup, you'll be asked to select the site you wish to duplicate the entry to. Select and option and continue.
+4. The entry will then be duplicated!
+
+### Taxonomy Terms
+
+1. Go to a Taxonomy, and view the terms listing.
+2. Decide on the term you wish to duplicate. Click on the three dots to toggle a dropdown and click the `Duplicate` option.
+3. The term will then be duplicated!
 
 ## Support
 
-Duplicator is a free addon, because of this there is no direct support channel. If you have a feature request or experience a bug, please [open a GitHub Issue](https://github.com/duncanmcclean/duplicator/issues/new/choose) and it'll be looked into over the next week or two.
+No new features are being added to this addon. Currently, it's only purpose is for providing the 'Duplicate' functionality for multi-sites.
 
-> Only the latest version of this addon is supported. If you open a bug report using an old version, your issue will be closed.
-
-## Sponsor me!
-
-Some of my addons (including this one) are free & open-source, meaning you can use them in your site without buying any licenses.
-
-However, there is a cost from my perspective to maintain this addon (fixing new bugs, adding new features, answering questions). That all takes time. I've spent over **10 hours** of my own time maintaining this addon over the past year.
-
-If you use this software on your projects & can afford it, I'd appreciate it if you'd consider [sponsoring me](https://github.com/sponsors/duncanmcclean), even if it's just a couple dollars a month.
+Once Statamic has implemented the Duplicate actions for multi-sites, this addon will be archived. Please leave a 👍 reaction on the [Statamic feature request](https://github.com/statamic/ideas/issues/942).
 
 <!-- statamic:hide -->
 
 ---
 
 <p>
-<a href="https://statamic.com"><img src="https://img.shields.io/badge/Statamic-3.3+-FF269E?style=for-the-badge" alt="Compatible with Statamic v3"></a>
+<a href="https://statamic.com"><img src="https://img.shields.io/badge/Statamic-3.4+-FF269E?style=for-the-badge" alt="Compatible with Statamic v3"></a>
 <a href="https://packagist.org/packages/doublethreedigital/duplicator/stats"><img src="https://img.shields.io/packagist/v/doublethreedigital/duplicator?style=for-the-badge" alt="Duplicator on Packagist"></a>
 <a href="https://tuple.app"><img src="https://img.shields.io/badge/Pairing%20with-Tuple-5A67D8?style=for-the-badge" alt="Pairing with Tuple"></a>
 </p>
