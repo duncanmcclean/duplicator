@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## v3.0.0 (2023-02-14)
+
+This addon is _back_! The Duplicator addon was merged into Statamic Core a few months ago. However, it doesn't yet support multi-sites.
+
+If you need to update your multi-site and keep Duplicator, you can now keep this addon:
+
+- The Assets/Form duplicate actions will be handled by Statamic.
+- The Entry/Term duplicate actions will be handled by this addon, in the same way they were handed previously.
+
+Please also give a 👍 reaction to the feature request on [statamic/ideas](https://github.com/statamic/ideas/issues/942).
+
 ## v2.3.4 (2022-11-12)
 
 ### What's fixed
