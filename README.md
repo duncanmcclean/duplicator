@@ -22,8 +22,6 @@ composer require doublethreedigital/duplicator
 
 Now you can start duplicating!
 
-<!-- statamic:hide -->
-
 ## Usage
 
 ### Collection Entries
@@ -46,6 +44,8 @@ Now you can start duplicating!
 No new features are being added to this addon. Currently, it's only purpose is for providing the 'Duplicate' functionality for multi-sites.
 
 Once Statamic has implemented the Duplicate actions for multi-sites, this addon will be archived. Please leave a 👍 reaction on the [Statamic feature request](https://github.com/statamic/ideas/issues/942).
+
+<!-- statamic:hide -->
 
 ---
 
