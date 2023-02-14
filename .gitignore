@@ -8,3 +8,4 @@ package-lock.json
 tests/__fixtures__/users/*.yaml
 tests/__fixtures__/content/collections/*.yaml
 tests/__fixtures__/content/collections/*/*.md
+composer.lock

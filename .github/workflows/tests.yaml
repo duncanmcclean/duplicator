@@ -7,14 +7,14 @@ on:
 jobs:
   php_tests:
     if: "!contains(github.event.head_commit.message, 'changelog')"
-  
+
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         php: [8.1, 8.0, 7.4]
         laravel: [9.*, 8.*]
-        statamic: [^3.2, ^3.3]
+        statamic: [^3.4]
         os: [ubuntu-latest]
         include:
           - laravel: 9.*
@@ -25,8 +25,6 @@ jobs:
             testbench: 6.*
         exclude:
           - laravel: 9.*
-            statamic: ^3.2
-          - laravel: 9.*
             php: 7.4
 
     name: ${{ matrix.php }} - ${{ matrix.statamic }} - ${{ matrix.laravel }}
@@ -34,9 +32,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-
-      - name: Delete composer.lock
-        run: rm composer.lock
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
