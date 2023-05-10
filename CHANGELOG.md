@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v4.0.1 (2023-05-10)
+
+### What's improved
+
+- Added back support for PHP 8.1 #60
+
 ## v4.0.0 (2023-05-10)
 
 ### What's new
