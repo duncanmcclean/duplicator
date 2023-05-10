@@ -126,15 +126,13 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function makeTerm(string $taxonomyHandle, string $slug, AuthUser $user)
     {
-        Term::make($slug)
+        return tap(Term::make($slug)
             ->taxonomy($taxonomyHandle)
             ->data([
                 'title' => 'Blah blah blah',
                 'text' => $this->faker->text,
-            ])
+            ]))
             ->save();
-
-        return Term::findByUri($slug, $taxonomyHandle);
     }
 
     protected function findEntryBySlug(string $slug, string $collectionHandle)
