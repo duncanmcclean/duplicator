@@ -74,6 +74,13 @@ class DuplicateEntryActionTest extends TestCase
         $collection = $this->makeCollection('guides', 'Guides');
         $entry = $this->makeEntry('guides', 'fresh-guide-smth', $this->user);
 
+        $collection->dated(true);
+        $collection->save();
+
+        $collection->entryBlueprint()->ensureFieldInTab('date', [
+            'type' => 'date',
+        ], 'sidebar');
+
         $entry = $entry->date(Carbon::parse('2021-08-08'));
         $entry->save();
 
