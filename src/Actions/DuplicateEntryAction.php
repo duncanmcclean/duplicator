@@ -63,7 +63,6 @@ class DuplicateEntryAction extends Action
                         ->blueprint($item->blueprint()->handle())
                         ->locale(isset($values['site']) && $values['site'] !== 'all' ? $values['site'] : $item->locale())
                         ->published(config('duplicator.defaults.published', $item->published()))
-                        ->slug($itemTitleAndSlug['slug'])
                         ->data(
                             $item->data()
                                 ->except(config("duplicator.ignored_fields.entries.{$item->collectionHandle()}"))
@@ -72,6 +71,10 @@ class DuplicateEntryAction extends Action
                                 ])
                                 ->toArray()
                         );
+
+                    if ($item->collection()->requiresSlugs()) {
+                        $entry->slug($itemTitleAndSlug['slug']);
+                    }
 
                     if ($item->hasDate()) {
                         $entry->date($item->date());
