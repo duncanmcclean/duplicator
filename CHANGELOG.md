@@ -6,8 +6,8 @@
 
 ### What's new
 
-- Statamic 4 support #59
-- Aligned the Duplicate action with recent changes in the Core action (added authorization, fixed for collections without slugs)
+- Statamic 4 support #59 by @grantholle
+- Aligned the Duplicate action with recent changes in the Core action (added authorization, fixed for collections without slugs) #59
 
 ## v3.0.0 (2023-02-14)
 
