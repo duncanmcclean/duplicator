@@ -24,12 +24,12 @@
         }
     },
     "require": {
-        "php": "^7.4 || ^8.0 || ^8.1",
-        "statamic/cms": "3.4.*"
+        "php": "^8.2",
+        "statamic/cms": "^4.0"
     },
     "require-dev": {
-        "nunomaduro/collision": "^4.2 || ^5.0 || ^6.1",
-        "orchestra/testbench": "^5.0 || ^6.0 || ^7.0"
+        "nunomaduro/collision": "^7.0",
+        "orchestra/testbench": "^8.0"
     },
     "scripts": {
         "lint": [

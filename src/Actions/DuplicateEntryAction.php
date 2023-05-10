@@ -150,7 +150,7 @@ class DuplicateEntryAction extends Action
         $slug .= '-' . $attempt;
 
         // If the slug we've just built already exists, we'll try again, recursively.
-        if (Entry::findBySlug($slug, $entry->collection()->handle())) {
+        if (Entry::findByUri($slug, $entry->collection()->handle())) {
             $generate = $this->generateTitleAndSlug($entry, $attempt + 1);
 
             $title = $generate['title'];

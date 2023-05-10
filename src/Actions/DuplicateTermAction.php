@@ -79,7 +79,7 @@ class DuplicateTermAction extends Action
         $slug .= '-' . $attempt;
 
         // If the slug we've just built already exists, we'll try again, recursively.
-        if (TermAPI::findBySlug($slug, $term->taxonomy()->handle())) {
+        if (TermAPI::findByUri($slug, $term->taxonomy()->handle())) {
             $generate = $this->generateTitleAndSlug($term, $attempt + 1);
 
             $title = $generate['title'];

@@ -112,7 +112,7 @@ abstract class TestCase extends OrchestraTestCase
             ->set('updated_at', now()->timestamp)
             ->save();
 
-        return Entry::findBySlug($slug, $collectionHandle);
+        return $this->findEntryBySlug($slug, $collectionHandle);
     }
 
     protected function makeTaxonomies(string $handle, string $name)
@@ -134,6 +134,20 @@ abstract class TestCase extends OrchestraTestCase
             ])
             ->save();
 
-        return Term::findBySlug($slug, $taxonomyHandle);
+        return Term::findByUri($slug, $taxonomyHandle);
+    }
+
+    protected function findEntryBySlug(string $slug, string $collectionHandle)
+    {
+        return Entry::whereCollection($collectionHandle)
+            ->where('slug', $slug)
+            ->first();
+    }
+
+    protected function findTermBySlug(string $slug, string $taxonomyHandle)
+    {
+        return Term::whereTaxonomy($taxonomyHandle)
+            ->where('slug', $slug)
+            ->first();
     }
 }
