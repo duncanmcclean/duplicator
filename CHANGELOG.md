@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v4.0.0 (2023-05-10)
+
+### What's new
+
+- Statamic 4 support
+- Aligned the Duplicate action with recent changes in the Core action (added authorization, fixed for collections without slugs)
+
 ## v3.0.0 (2023-02-14)
 
 This addon is _back_! The Duplicator addon was merged into Statamic Core a few months ago. However, it doesn't yet support multi-sites.
