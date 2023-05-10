@@ -165,4 +165,9 @@ class DuplicateEntryAction extends Action
             'slug' => $slug,
         ];
     }
+
+    public function authorize($user, $item)
+    {
+        return $user->can('create', [AnEntry::class, $item->collection()]);
+    }
 }

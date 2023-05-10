@@ -91,4 +91,9 @@ class DuplicateTermAction extends Action
             'slug' => $slug,
         ];
     }
+
+    public function authorize($user, $item)
+    {
+        return $user->can('create', [Term::class, $item->taxonomy()]);
+    }
 }
