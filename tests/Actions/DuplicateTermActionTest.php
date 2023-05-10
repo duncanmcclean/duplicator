@@ -61,7 +61,7 @@ class DuplicateTermActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$term]), []);
 
-        $duplicateTerm = Term::findBySlug('haggis-1', 'categories');
+        $duplicateTerm = $this->findTermBySlug('haggis-1', 'categories');
 
         $this->assertIsObject($duplicateTerm);
         $this->assertSame($duplicateTerm->slug(), 'haggis-1');
@@ -79,7 +79,7 @@ class DuplicateTermActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$term]), []);
 
-        $duplicateTerm = Term::findBySlug('haggis-1', 'categories');
+        $duplicateTerm = $this->findTermBySlug('haggis-1', 'categories');
 
         $this->assertIsObject($duplicateTerm);
         $this->assertSame($duplicateTerm->slug(), 'haggis-1');
@@ -98,7 +98,7 @@ class DuplicateTermActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$term]), []);
 
-        $duplicateTerm = Term::findBySlug('haggis-1', 'categories');
+        $duplicateTerm = $this->findTermBySlug('haggis-1', 'categories');
 
         $this->assertIsObject($duplicateTerm);
         $this->assertSame($duplicateTerm->slug(), 'haggis-1');
@@ -124,7 +124,7 @@ class DuplicateTermActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$term]), []);
 
-        $duplicateTerm = Term::findBySlug('haggis-1', 'categories');
+        $duplicateTerm = $this->findTermBySlug('haggis-1', 'categories');
 
         $this->assertIsObject($duplicateTerm);
         $this->assertSame($duplicateTerm->slug(), 'haggis-1');
@@ -141,7 +141,7 @@ class DuplicateTermActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$term]), []);
 
-        $duplicateTerm = Term::findBySlug('spaghetti-1', 'categories');
+        $duplicateTerm = $this->findTermBySlug('spaghetti-1', 'categories');
 
         $this->assertIsObject($duplicateTerm);
         $this->assertSame($duplicateTerm->slug(), 'spaghetti-1');
@@ -159,7 +159,7 @@ class DuplicateTermActionTest extends TestCase
 
         $duplicate = $this->action->run(collect([$term]), []);
 
-        $duplicateTerm = Term::findBySlug('cheese-1', 'categories');
+        $duplicateTerm = $this->findTermBySlug('cheese-1', 'categories');
 
         $this->assertIsObject($duplicateTerm);
         $this->assertSame($duplicateTerm->slug(), 'cheese-1');

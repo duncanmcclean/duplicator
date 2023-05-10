@@ -63,7 +63,6 @@ class DuplicateEntryAction extends Action
                         ->blueprint($item->blueprint()->handle())
                         ->locale(isset($values['site']) && $values['site'] !== 'all' ? $values['site'] : $item->locale())
                         ->published(config('duplicator.defaults.published', $item->published()))
-                        ->slug($itemTitleAndSlug['slug'])
                         ->data(
                             $item->data()
                                 ->except(config("duplicator.ignored_fields.entries.{$item->collectionHandle()}"))
@@ -72,6 +71,10 @@ class DuplicateEntryAction extends Action
                                 ])
                                 ->toArray()
                         );
+
+                    if ($item->collection()->requiresSlugs()) {
+                        $entry->slug($itemTitleAndSlug['slug']);
+                    }
 
                     if ($item->hasDate()) {
                         $entry->date($item->date());
@@ -112,7 +115,7 @@ class DuplicateEntryAction extends Action
         $parentEntry = $entry
             ->structure()
             ->in($entry->locale())
-            ->page($entry->id())
+            ->find($entry->id())
             ->parent();
 
         if (! $parentEntry) {
@@ -150,7 +153,7 @@ class DuplicateEntryAction extends Action
         $slug .= '-' . $attempt;
 
         // If the slug we've just built already exists, we'll try again, recursively.
-        if (Entry::findBySlug($slug, $entry->collection()->handle())) {
+        if (Entry::findByUri($slug, $entry->collection()->handle())) {
             $generate = $this->generateTitleAndSlug($entry, $attempt + 1);
 
             $title = $generate['title'];
@@ -161,5 +164,10 @@ class DuplicateEntryAction extends Action
             'title' => $title,
             'slug' => $slug,
         ];
+    }
+
+    public function authorize($user, $item)
+    {
+        return $user->can('create', [AnEntry::class, $item->collection()]);
     }
 }
