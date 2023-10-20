@@ -6,9 +6,13 @@
 
 <!-- /statamic:hide -->
 
-**This addon has been archived - it's functionality is now part of Statamic Core (as of [v3.3.59](https://github.com/statamic/cms/releases/tag/v3.3.59)).**
+**This addon has been archived.** Its functionality was added to Statamic Core as part of [v3.3.59](https://github.com/statamic/cms/releases/tag/v3.3.59) and [v4.30.0](https://github.com/statamic/cms/releases/tag/v4.30.0). 
 
-**If you're running a multi-site,** you'll probably want to keep this addon installed for now as the Duplicate functionality within Statamic doesn't yet support multi-site. Please add your 👍 to the feature request on [statamic/ideas](https://github.com/statamic/ideas/issues/942).
+After updating to the latest Statamic version, you may uninstall this addon from your project:
+
+```
+composer remove doublethreedigital/duplicator
+```
 
 ## Installation
 
